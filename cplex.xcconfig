@@ -1,0 +1,13 @@
+//
+//  cplex.xcconfig
+//  Vehicles_1st_echelon
+//
+//  Created by Guven Ince on 3/10/13.
+//  Copyright 2013 UMASS. All rights reserved.
+//
+
+OTHER_LDFLAGS = -lilocplex -lconcert -lcplex -WI,-no_compact_unwind
+HEADER_SEARCH_PATHS = /Users/gince/Applications/IBM/ILOG/CPLEX_Studio125/cplex/include/ /Users/gince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/
+LIBRARY_SEARCH_PATHS = /Users/gince/Applications/IBM/ILOG/CPLEX_Studio125/cplex/lib/x86-64_darwin/static_pic /Users/gince/Applications/IBM/ILOG/CPLEX_Studio125/concert/lib/x86-64_darwin/static_pic
+OTHER_CFLAGS = -DIL_STD
+OTHER_CPLUSPLUSFLAGS = $(OTHER_CFLAGS)

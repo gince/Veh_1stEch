@@ -1,0 +1,684 @@
+TVehicles_1st_echelon
+v7
+r0
+t384971163.381157
+cCheck dependencies
+cCompileC build/Vehicles_1st_echelon.build/Debug/Vehicles_1st_echelon.build/Objects-normal/x86_64/main.o /Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/main.cpp normal x86_64 c++ com.apple.compilers.gcc.4_2
+cCompileC build/Vehicles_1st_echelon.build/Debug/Vehicles_1st_echelon.build/Objects-normal/x86_64/functions.o /Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/functions.cpp normal x86_64 c++ com.apple.compilers.gcc.4_2
+cLd /Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/build/Debug/Vehicles_1st_echelon normal x86_64
+
+N/Developer/SDKs/MacOSX10.6.sdk
+c000000004CAA740B00000000000000EE
+t1286239243
+s238
+
+N/Developer/SDKs/MacOSX10.6.sdk/Developer/usr/llvm-gcc-4.2/lib/gcc/i686-apple-darwin10/4.2.1/include/limits.h
+c000000004C6C8CD60000000000000D03
+t1282182358
+s3331
+
+N/Developer/SDKs/MacOSX10.6.sdk/Developer/usr/llvm-gcc-4.2/lib/gcc/i686-apple-darwin10/4.2.1/include/stdarg.h
+c000000004C6C8CD600000000000010DD
+t1282182358
+s4317
+
+N/Developer/SDKs/MacOSX10.6.sdk/Developer/usr/llvm-gcc-4.2/lib/gcc/i686-apple-darwin10/4.2.1/include/stddef.h
+c000000004C6C8CD60000000000003197
+t1282182358
+s12695
+
+N/Developer/SDKs/MacOSX10.6.sdk/usr/include/assert.h
+c000000004BBD2CE90000000000000DCB
+t1270689001
+s3531
+
+N/Developer/SDKs/MacOSX10.6.sdk/usr/include/ctype.h
+c000000004BBD2CE90000000000002C18
+t1270689001
+s11288
+
+N/Developer/SDKs/MacOSX10.6.sdk/usr/include/limits.h
+c000000004BBD2CE9000000000000145A
+t1270689001
+s5210
+
+N/Developer/SDKs/MacOSX10.6.sdk/usr/include/math.h
+c000000004A5C14A000000000000004F1
+t1247548576
+s1265
+
+N/Developer/SDKs/MacOSX10.6.sdk/usr/include/pthread.h
+c000000004BBD2CE900000000000038F0
+t1270689001
+s14576
+
+N/Developer/SDKs/MacOSX10.6.sdk/usr/include/setjmp.h
+c000000004BBD2CE90000000000000438
+t1270689001
+s1080
+
+N/Developer/SDKs/MacOSX10.6.sdk/usr/include/stdarg.h
+c000000004BBD2CE900000000000000EA
+t1270689001
+s234
+
+N/Developer/SDKs/MacOSX10.6.sdk/usr/include/stddef.h
+c000000004BBD2CE90000000000001404
+t1270689001
+s5124
+
+N/Developer/SDKs/MacOSX10.6.sdk/usr/include/stdint.h
+c000000004A11EB3D000000000000190C
+t1242688317
+s6412
+
+N/Developer/SDKs/MacOSX10.6.sdk/usr/include/stdio.h
+c000000004BBD2CE90000000000004174
+t1270689001
+s16756
+
+N/Developer/SDKs/MacOSX10.6.sdk/usr/include/stdlib.h
+c000000004BBD2CE90000000000002DF5
+t1270689001
+s11765
+
+N/Developer/SDKs/MacOSX10.6.sdk/usr/include/string.h
+c000000004BBD2CE90000000000001731
+t1270689001
+s5937
+
+N/Developer/SDKs/MacOSX10.6.sdk/usr/include/unistd.h
+c000000004BBD2CE9000000000000563E
+t1270689001
+s22078
+
+N/Developer/SDKs/MacOSX10.6.sdk/usr/lib/gcc/i686-apple-darwin10/4.2.1/include/limits.h
+c000000004A11EB240000000000000C7E
+t1242688292
+s3198
+
+N/Developer/SDKs/MacOSX10.6.sdk/usr/lib/gcc/i686-apple-darwin10/4.2.1/include/stdarg.h
+c000000004A11EB2400000000000010DD
+t1242688292
+s4317
+
+N/Developer/SDKs/MacOSX10.6.sdk/usr/lib/gcc/i686-apple-darwin10/4.2.1/include/stddef.h
+c000000004A11EB240000000000003197
+t1242688292
+s12695
+
+N/Developer/SDKs/MacOSX10.6.sdk/usr/lib/gcc/i686-apple-darwin10/4.2.1/include/stdint.h
+c000000004A11EB24000000000000190C
+t1242688292
+s6412
+
+N/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/iloalg.h
+c00000000513D0B6000000000000013EA
+t1362955104
+s5098
+i<ilconcert/iloenv.h>
+i<ilconcert/iloextractable.h>
+
+N/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/iloalgi.h
+c00000000513D0B610000000000001F76
+t1362955105
+s8054
+i<ilconcert/ilomodeli.h>
+i<ilconcert/ilolinear.h>
+i<ilconcert/iloalg.h>
+
+N/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/iloallocator.h
+c00000000513D0B610000000000001D98
+t1362955105
+s7576
+i<ilconcert/ilosys.h>
+
+N/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/iloany.h
+c00000000513D0B6100000000000019A3
+t1362955105
+s6563
+i<ilconcert/iloexpression.h>
+i<ilconcert/ilolinear.h>
+
+N/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/iloanyset.h
+c00000000513D0B610000000000002D93
+t1362955105
+s11667
+i<ilconcert/iloany.h>
+i<ilconcert/iloset.h>
+i<ilconcert/ilocollection.h>
+
+N/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/ilobasic.h
+c00000000513D0B610000000000000663
+t1362955105
+s1635
+i<ilconcert/ilosys.h>
+i<ilconcert/iloalg.h>
+
+N/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/ilobox.h
+c00000000513D0B610000000000002045
+t1362955105
+s8261
+i<ilconcert/iloexpression.h>
+
+N/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/ilocollection.h
+c00000000513D0B610000000000002DFF
+t1362955105
+s11775
+i<ilconcert/iloenv.h>
+
+N/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/ilodomaini.h
+c00000000513D0B610000000000001216
+t1362955105
+s4630
+i<ilconcert/iloexpression.h>
+
+N/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/iloenv.h
+c00000000513D2760000000000001AD3D
+t1362962272
+s109885
+i<ilconcert/ilosys.h>
+i<ilconcert/ilortti.h>
+i<ilconcert/ilomemmgr.h>
+i<ilconcert/iloallocator.h>
+i<cstring>
+i<math.h>
+i<stdlib.h>
+i<ctype.h>
+
+N/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/iloexpression.h
+c00000000513D0B610000000000012000
+t1362955105
+s73728
+i<ilconcert/iloextractable.h>
+i<ilconcert/iloalg.h>
+
+N/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/iloexpressioni.h
+c00000000513D0B610000000000011989
+t1362955105
+s72073
+i<ilconcert/iloexpression.h>
+i<ilconcert/ilsched/ilosbasic.h>
+i<ilconcert/ilonumfunci.h>
+
+N/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/iloextractable.h
+c00000000513D0B61000000000000890C
+t1362955105
+s35084
+i<ilconcert/iloenv.h>
+i<ilconcert/ilolinkedlist.h>
+i<ilconcert/iloalg.h>
+
+N/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/ilohash.h
+c00000000513D0B6100000000000053F9
+t1362955105
+s21497
+i<ilconcert/ilosys.h>
+i<ilconcert/iloenv.h>
+
+N/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/ilointervals.h
+c00000000513D0B610000000000002753
+t1362955105
+s10067
+i<ilconcert/iloparam.h>
+i<ilconcert/ilointervalsi.h>
+
+N/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/ilointervalsi.h
+c00000000513D0B610000000000000E23
+t1362955105
+s3619
+i<ilconcert/iloskiplist.h>
+
+N/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/iloiterator.h
+c00000000513D0B610000000000000AD3
+t1362955105
+s2771
+i<ilconcert/iloextractable.h>
+
+N/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/ilolinear.h
+c00000000513D0B61000000000000C977
+t1362955105
+s51575
+i<ilconcert/iloexpression.h>
+
+N/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/ilolinkedlist.h
+c00000000513D0B610000000000001ABD
+t1362955105
+s6845
+i<ilconcert/iloenv.h>
+
+N/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/ilomemmgr.h
+c00000000513D0B61000000000000119A
+t1362955105
+s4506
+i<ilconcert/ilosys.h>
+i<ilconcert/ilortti.h>
+
+N/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/ilomodel.h
+c00000000513D0B6100000000000051F3
+t1362955105
+s20979
+i<ilconcert/iloalg.h>
+i<ilconcert/iloiterator.h>
+i<ilconcert/iloexpression.h>
+i<ilconcert/ilolinear.h>
+i<ilconcert/iloset.h>
+i<ilconcert/iloanyset.h>
+i<ilconcert/ilobox.h>
+i<ilconcert/ilorandom.h>
+i<ilconcert/ilosmodel.h>
+i<ilconcert/ilosolution.h>
+
+N/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/ilomodeli.h
+c00000000513D0B610000000000000CB3
+t1362955105
+s3251
+i<ilconcert/iloextractable.h>
+
+N/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/ilonumfunc.h
+c00000000513D0B6100000000000023ED
+t1362955105
+s9197
+i<ilconcert/iloparam.h>
+i<ilconcert/ilonumfunci.h>
+
+N/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/ilonumfunci.h
+c00000000513D0B610000000000001994
+t1362955105
+s6548
+i<ilconcert/ilointervalsi.h>
+
+N/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/iloparam.h
+c00000000513D0B6100000000000003FE
+t1362955105
+s1022
+i<ilconcert/iloparami.h>
+
+N/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/iloparami.h
+c00000000513D0B610000000000001FAC
+t1362955105
+s8108
+i<ilconcert/ilobasic.h>
+i<ilconcert/iloextractable.h>
+
+N/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/ilorandom.h
+c00000000513D0B6100000000000014BD
+t1362955105
+s5309
+i<ilconcert/iloenv.h>
+
+N/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/ilortti.h
+c00000000513D0B6100000000000017DF
+t1362955105
+s6111
+
+N/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/ilosegfunc.h
+c00000000513D0B610000000000002D45
+t1362955105
+s11589
+i<ilconcert/iloparam.h>
+i<ilconcert/ilonumfunci.h>
+
+N/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/iloset.h
+c00000000513D0B610000000000003DFE
+t1362955105
+s15870
+i<ilconcert/iloexpression.h>
+i<ilconcert/ilocollection.h>
+
+N/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/iloskiplist.h
+c00000000513D0B610000000000001408
+t1362955105
+s5128
+i<ilconcert/iloparami.h>
+
+N/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/ilosmodel.h
+c00000000513D0B6100000000000167AC
+t1362955105
+s92076
+i<ilconcert/iloexpression.h>
+i<ilconcert/iloexpressioni.h>
+i<ilconcert/ilointervals.h>
+i<ilconcert/ilonumfunc.h>
+i<ilconcert/ilosegfunc.h>
+
+N/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/ilosolution.h
+c00000000513D0B6100000000000168A3
+t1362955105
+s92323
+i<ilconcert/iloalg.h>
+i<ilconcert/ilolinear.h>
+i<ilconcert/iloany.h>
+i<ilconcert/iloset.h>
+i<ilconcert/iloanyset.h>
+i<ilconcert/ilodomaini.h>
+i<ilconcert/ilosmodel.h>
+i<ilconcert/ilsched/ilostimei.h>
+i<ilconcert/iloalg.h>
+i<ilconcert/ilohash.h>
+
+N/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/ilosys.h
+c00000000513D0B610000000000003C3A
+t1362955105
+s15418
+i<unistd.h>
+i<pthread.h>
+i<unistd.h>
+i<pthread.h>
+i<unistd.h>
+i<pthread.h>
+i<pthread.h>
+i<stddef.h>
+i<unistd.h>
+i<pthread.h>
+i<climits>
+i<stdio.h>
+i<unistd.h>
+i<pthread.h>
+i<pthread.h>
+i"generic.h"
+i<string>
+i<iostream>
+i<limits>
+i<fstream>
+i<iomanip>
+i<sstream>
+i<istream>
+i<ostream>
+i<sstream>
+i<istream>
+i<ostream>
+i<strstream>
+i<strstream>
+i<string.h>
+i<iostream.h>
+i<limits.h>
+i<fstream.h>
+i<string.h>
+i<iomanip.h>
+i<strstrea.h>
+i<strstream.h>
+i<assert.h>
+i<stdarg.h>
+i<setjmp.h>
+
+N/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/ilsched/ilosbasic.h
+c00000000513D0B6100000000000025CE
+t1362955105
+s9678
+i<ilconcert/ilosys.h>
+i<ilconcert/iloalg.h>
+i<ilconcert/iloextractable.h>
+
+N/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/ilsched/ilostimei.h
+c00000000513D0B610000000000004174
+t1362955105
+s16756
+i<ilconcert/iloenv.h>
+i<ilconcert/iloexpression.h>
+i<ilconcert/iloexpressioni.h>
+i<ilconcert/iloparami.h>
+i<ilconcert/ilonumfunci.h>
+i<ilconcert/ilsched/ilosbasic.h>
+
+N/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/cplex/include/ilcplex/cplex.h
+c00000000513D10E7000000000001158A
+t1362956519
+s71050
+i"cpxconst.h"
+i"cpxconst.h"
+
+N/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/cplex/include/ilcplex/cplexl.h
+c00000000513D10E80000000000011215
+t1362956520
+s70165
+i"cpxconst.h"
+
+N/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/cplex/include/ilcplex/cplexremote.h
+c00000000513D10E800000000000007F5
+t1362956520
+s2037
+i"ilcplex/cplex.h"
+
+N/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/cplex/include/ilcplex/cplexremotemaster.h
+c00000000513D10E80000000000017A06
+t1362956520
+s96774
+i"ilcplex/cplexremote.h"
+
+N/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/cplex/include/ilcplex/cplexs.h
+c00000000513D10E800000000000110E8
+t1362956520
+s69864
+i"cpxconst.h"
+
+N/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/cplex/include/ilcplex/cplexx.h
+c00000000513D10E8000000000001AD82
+t1362956520
+s109954
+i"cpxconst.h"
+i"cplexs.h"
+i"cplexl.h"
+
+N/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/cplex/include/ilcplex/cpxconst.h
+c00000000513D10E8000000000000FC6C
+t1362956520
+s64620
+i<stdlib.h>
+i<limits.h>
+i<stdint.h>
+i<stdio.h>
+
+N/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/cplex/include/ilcplex/ilm.h
+c00000000513D10E800000000000002C2
+t1362956520
+s706
+i<ilcplex/cplex.h>
+
+N/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/cplex/include/ilcplex/ilocarray.h
+c00000000513D10E800000000000019BC
+t1362956520
+s6588
+i<assert.h>
+i<stdlib.h>
+i<string.h>
+i"cplexx.h"
+
+N/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/cplex/include/ilcplex/ilocplex.h
+c00000000513D10E80000000000029502
+t1362956520
+s169218
+i<ilconcert/ilomodel.h>
+i<ilconcert/ilosys.h>
+i<ilcplex/ilocplexi.h>
+i<ilconcert/iloalg.h>
+i<ilcplex/ilm.h>
+i<ilcplex/ilogoals.h>
+
+N/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/cplex/include/ilcplex/ilocplexi.h
+c00000000513D10E8000000000002D11B
+t1362956520
+s184603
+i<ilconcert/ilomodel.h>
+i<ilconcert/iloalgi.h>
+i<ilcplex/ilocarray.h>
+i<ilcplex/cplex.h>
+i<ilcplex/cplexremotemaster.h>
+i<ilcplex/cplexx.h>
+
+N/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/cplex/include/ilcplex/ilogoals.h
+c00000000513D10E800000000000032B8
+t1362956520
+s12984
+i<ilcplex/ilocplexi.h>
+
+N/Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/build/Debug/Vehicles_1st_echelon
+t1363278363
+s20307968
+
+N/Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/build/Vehicles_1st_echelon.build/Debug/Vehicles_1st_echelon.build/Objects-normal/x86_64/Vehicles_1st_echelon.LinkFileList
+c00000000513D298C000000000000012D
+t1362962828
+s301
+
+N/Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/build/Vehicles_1st_echelon.build/Debug/Vehicles_1st_echelon.build/Objects-normal/x86_64/definitions.o
+t2
+s0
+
+N/Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/build/Vehicles_1st_echelon.build/Debug/Vehicles_1st_echelon.build/Objects-normal/x86_64/functions.o
+t1363149799
+s912556
+
+N/Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/build/Vehicles_1st_echelon.build/Debug/Vehicles_1st_echelon.build/Objects-normal/x86_64/main.o
+t1363278361
+s710196
+
+N/Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/definitions.cpp
+c00000000513D287800000000000000AA
+t1362962552
+s170
+i"definitions.h"
+
+N/Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/definitions.h
+c00000000513FE36200000000000011A4
+t1363141474
+s4516
+
+N/Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/functions.cpp
+c00000000514003E300000000000023E8
+t1363149795
+s9192
+i<ilcplex/ilocplex.h>
+i<set>
+i<vector>
+i<iostream>
+i<fstream>
+i"functions.h"
+
+N/Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/functions.h
+c00000000513D29C70000000000000501
+t1362962887
+s1281
+i"definitions.h"
+
+N/Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/main.cpp
+c000000005141FA13000000000000413D
+t1363278355
+s16701
+i<ilcplex/ilocplex.h>
+i<set>
+i<vector>
+i<iostream>
+i<fstream>
+i<math.h>
+i"functions.h"
+i"definitions.h"
+
+CCheck dependencies
+r0
+lSLF07#2@18"Check dependencies384971157#384971157#0(0"0(0#1#0"8617037376#0"0#
+
+CCompileC build/Vehicles_1st_echelon.build/Debug/Vehicles_1st_echelon.build/Objects-normal/x86_64/definitions.o /Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/definitions.cpp normal x86_64 c++ com.apple.compilers.llvmgcc42
+r0
+
+CCompileC build/Vehicles_1st_echelon.build/Debug/Vehicles_1st_echelon.build/Objects-normal/x86_64/functions.o /Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/functions.cpp normal x86_64 c++ com.apple.compilers.gcc.4_2
+s384842729.368319
+e384842729.369827
+r1
+xCompileC
+xbuild/Vehicles_1st_echelon.build/Debug/Vehicles_1st_echelon.build/Objects-normal/x86_64/functions.o
+x/Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/functions.cpp
+xnormal
+xx86_64
+xc++
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@74"Compile /Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/functions.cpp384842729#384842729#0(724"In file included from /Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/iloalg.h:21,                 from /Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/ilomodel.h:21,                 from /Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/cplex/include/ilcplex/ilocplex.h:27,                 from /Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/functions.cpp:11:/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/iloenv.h:2724:1: warning: "ILOARRAY" redefined/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/iloenv.h:2571:1: warning: this is the location of the previous definition2(22@20""ILOARRAY" redefined384842729#441#128#5(7@88"In file included from /Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/functions.cpp384842729#18446744073709551615#0#0(6@66"/Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/functions.cpp384842595#11#0#11#0#0"0(7@109"In file included from /Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/cplex/include/ilcplex/ilocplex.h384842729#18446744073709551615#0#0(6@87"/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/cplex/include/ilcplex/ilocplex.h384649320#27#0#27#0#0"0(7@113"In file included from /Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/ilomodel.h384842729#18446744073709551615#0#0(6@91"/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/ilomodel.h384647905#21#0#21#0#0"0(7@111"In file included from /Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/iloalg.h384842729#18446744073709551615#0#0(6@89"/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/iloalg.h384647904#21#0#21#0#0"0(13@113""ILOARRAY" redefined in /Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/iloenv.h384842729#18446744073709551615#0#0(6@89"/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/iloenv.h384655072#2724#0#2724#0#0"0(6@89"/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/iloenv.h384655072#2724#0#2724#0#13""*" redefined0(22@47"This is the location of the previous definition384842729#569#155#5(7@88"In file included from /Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/functions.cpp384842729#18446744073709551615#0#0(6@66"/Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/functions.cpp384842595#11#0#11#0#0"0(7@109"In file included from /Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/cplex/include/ilcplex/ilocplex.h384842729#18446744073709551615#0#0(6@87"/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/cplex/include/ilcplex/ilocplex.h384649320#27#0#27#0#0"0(7@113"In file included from /Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/ilomodel.h384842729#18446744073709551615#0#0(6@91"/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/ilomodel.h384647905#21#0#21#0#0"0(7@111"In file included from /Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/iloalg.h384842729#18446744073709551615#0#0(6@89"/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/iloalg.h384647904#21#0#21#0#0"0(13@140"This is the location of the previous definition in /Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/iloenv.h384842729#18446744073709551615#0#0(6@89"/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/iloenv.h384655072#2571#0#2571#0#0"0(6@89"/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/iloenv.h384655072#2571#0#2571#0#47"this is the location of the previous definition0(0#0#66"/Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/functions.cpp8632758912#1842"    cd /Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch x86_64 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.6.sdk -mfix-and-continue -fvisibility-inlines-hidden -mmacosx-version-min=10.6 -gdwarf-2 -iquote /Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/build/Vehicles_1st_echelon.build/Debug/Vehicles_1st_echelon.build/Vehicles_1st_echelon-generated-files.hmap -I/Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/build/Vehicles_1st_echelon.build/Debug/Vehicles_1st_echelon.build/Vehicles_1st_echelon-own-target-headers.hmap -I/Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/build/Vehicles_1st_echelon.build/Debug/Vehicles_1st_echelon.build/Vehicles_1st_echelon-all-target-headers.hmap -iquote /Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/build/Vehicles_1st_echelon.build/Debug/Vehicles_1st_echelon.build/Vehicles_1st_echelon-project-headers.hmap -F/Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/build/Debug -I/Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/build/Debug/include -I/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/cplex/include -I/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include -I/Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/build/Vehicles_1st_echelon.build/Debug/Vehicles_1st_echelon.build/DerivedSources/x86_64 -I/Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/build/Vehicles_1st_echelon.build/Debug/Vehicles_1st_echelon.build/DerivedSources -DIL_STD -c /Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/functions.cpp -o /Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/build/Vehicles_1st_echelon.build/Debug/Vehicles_1st_echelon.build/Objects-normal/x86_64/functions.o0#
+
+CCompileC build/Vehicles_1st_echelon.build/Debug/Vehicles_1st_echelon.build/Objects-normal/x86_64/functions.o /Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/functions.cpp normal x86_64 c++ com.apple.compilers.llvmgcc42
+s384655809.188390
+e384655810.855228
+r0
+xCompileC
+xbuild/Vehicles_1st_echelon.build/Debug/Vehicles_1st_echelon.build/Objects-normal/x86_64/functions.o
+x/Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/functions.cpp
+xnormal
+xx86_64
+xc++
+xcom.apple.compilers.llvmgcc42
+oIn file included from /Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/iloalg.h:21,
+o                 from /Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/ilomodel.h:21,
+o                 from /Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/cplex/include/ilcplex/ilocplex.h:27,
+o                 from /Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/functions.cpp:12:
+o/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/iloenv.h:2724:1: warning: "ILOARRAY" redefined
+o/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/iloenv.h:2571:1: warning: this is the location of the previous definition
+oIn file included from /Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/functions.h:13,
+o                 from /Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/functions.cpp:10:
+o/Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/definitions.h:13: error: expected template-name before '<' token
+o/Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/definitions.h:13: error: expected `{' before '<' token
+o/Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/definitions.h:13: error: expected unqualified-id before '<' token
+oIn file included from /Developer/SDKs/MacOSX10.6.sdk/usr/include/c++/4.2.1/i686-apple-darwin10/x86_64/bits/c++io.h:43,
+o                 from /Developer/SDKs/MacOSX10.6.sdk/usr/include/c++/4.2.1/iosfwd:46,
+o                 from /Developer/SDKs/MacOSX10.6.sdk/usr/include/c++/4.2.1/bits/stl_algobase.h:70,
+o                 from /Developer/SDKs/MacOSX10.6.sdk/usr/include/c++/4.2.1/bits/char_traits.h:46,
+o                 from /Developer/SDKs/MacOSX10.6.sdk/usr/include/c++/4.2.1/string:47,
+o                 from /Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/ilosys.h:355,
+o                 from /Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/iloenv.h:21,
+o                 from /Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/iloalg.h:21,
+o                 from /Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/ilomodel.h:21,
+o                 from /Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/cplex/include/ilcplex/ilocplex.h:27,
+o                 from /Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/functions.cpp:12:
+o/Developer/SDKs/MacOSX10.6.sdk/usr/include/c++/4.2.1/i686-apple-darwin10/x86_64/bits/gthr.h:33: error: expected declaration before end of line
+lSLF07#2@74"Compile /Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/functions.cpp384655809#384655810#0(2558"In file included from /Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/iloalg.h:21,                 from /Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/ilomodel.h:21,                 from /Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/cplex/include/ilcplex/ilocplex.h:27,                 from /Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/functions.cpp:12:/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/iloenv.h:2724:1: warning: "ILOARRAY" redefined/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/iloenv.h:2571:1: warning: this is the location of the previous definitionIn file included from /Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/functions.h:13,                 from /Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/functions.cpp:10:/Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/definitions.h:13: error: expected template-name before '<' token/Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/definitions.h:13: error: expected `{' before '<' token/Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/definitions.h:13: error: expected unqualified-id before '<' tokenIn file included from /Developer/SDKs/MacOSX10.6.sdk/usr/include/c++/4.2.1/i686-apple-darwin10/x86_64/bits/c++io.h:43,                 from /Developer/SDKs/MacOSX10.6.sdk/usr/include/c++/4.2.1/iosfwd:46,                 from /Developer/SDKs/MacOSX10.6.sdk/usr/include/c++/4.2.1/bits/stl_algobase.h:70,                 from /Developer/SDKs/MacOSX10.6.sdk/usr/include/c++/4.2.1/bits/char_traits.h:46,                 from /Developer/SDKs/MacOSX10.6.sdk/usr/include/c++/4.2.1/string:47,                 from /Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/ilosys.h:355,                 from /Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/iloenv.h:21,                 from /Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/iloalg.h:21,                 from /Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/ilomodel.h:21,                 from /Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/cplex/include/ilcplex/ilocplex.h:27,                 from /Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/functions.cpp:12:/Developer/SDKs/MacOSX10.6.sdk/usr/include/c++/4.2.1/i686-apple-darwin10/x86_64/bits/gthr.h:33: error: expected declaration before end of line6(22@20""ILOARRAY" redefined384655810#441#128#5(7@88"In file included from /Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/functions.cpp384655810#18446744073709551615#0#0(6@66"/Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/functions.cpp384655595#12#0#12#0#0"0(7@109"In file included from /Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/cplex/include/ilcplex/ilocplex.h384655810#18446744073709551615#0#0(6@87"/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/cplex/include/ilcplex/ilocplex.h384649320#27#0#27#0#0"0(7@113"In file included from /Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/ilomodel.h384655810#18446744073709551615#0#0(6@91"/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/ilomodel.h384647905#21#0#21#0#0"0(7@111"In file included from /Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/iloalg.h384655810#18446744073709551615#0#0(6@89"/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/iloalg.h384647904#21#0#21#0#0"0(13@113""ILOARRAY" redefined in /Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/iloenv.h384655810#18446744073709551615#0#0(6@89"/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/iloenv.h384655072#2724#0#2724#0#0"0(6@89"/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/iloenv.h384655072#2724#0#2724#0#13""*" redefined0(22@47"This is the location of the previous definition384655810#569#155#5(7@88"In file included from /Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/functions.cpp384655810#18446744073709551615#0#0(6@66"/Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/functions.cpp384655595#12#0#12#0#0"0(7@109"In file included from /Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/cplex/include/ilcplex/ilocplex.h384655810#18446744073709551615#0#0(6@87"/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/cplex/include/ilcplex/ilocplex.h384649320#27#0#27#0#0"0(7@113"In file included from /Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/ilomodel.h384655810#18446744073709551615#0#0(6@91"/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/ilomodel.h384647905#21#0#21#0#0"0(7@111"In file included from /Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/iloalg.h384655810#18446744073709551615#0#0(6@89"/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/iloalg.h384647904#21#0#21#0#0"0(13@140"This is the location of the previous definition in /Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/iloenv.h384655810#18446744073709551615#0#0(6@89"/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/iloenv.h384655072#2571#0#2571#0#0"0(6@89"/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/iloenv.h384655072#2571#0#2571#0#47"this is the location of the previous definition0(4@39"Expected template-name before '<' token384655810#908#118#3(7@88"In file included from /Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/functions.cpp384655810#18446744073709551615#0#0(6@66"/Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/functions.cpp384655595#10#0#10#0#0"0(7@86"In file included from /Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/functions.h384655810#18446744073709551615#0#0(6@64"/Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/functions.h384655687#13#0#13#0#0"0(13@109"Expected template-name before '<' token in /Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/definitions.h384655810#18446744073709551615#0#0(6@66"/Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/definitions.h384655801#13#0#13#0#0"0(6@66"/Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/definitions.h384655801#13#0#13#0#19"expected * before *0(4@29"Expected `{' before '<' token384655810#1026#108#3(7@88"In file included from /Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/functions.cpp384655810#18446744073709551615#0#0(6@66"/Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/functions.cpp384655595#10#0#10#0#0"0(7@86"In file included from /Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/functions.h384655810#18446744073709551615#0#0(6@64"/Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/functions.h384655687#13#0#13#0#0"0(13@99"Expected `{' before '<' token in /Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/definitions.h384655810#18446744073709551615#0#0(6@66"/Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/definitions.h384655801#13#0#13#0#0"0(6@66"/Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/definitions.h384655801#13#0#13#0#19"expected * before *0(4@40"Expected unqualified-id before '<' token384655810#1134#119#3(7@88"In file included from /Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/functions.cpp384655810#18446744073709551615#0#0(6@66"/Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/functions.cpp384655595#10#0#10#0#0"0(7@86"In file included from /Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/functions.h384655810#18446744073709551615#0#0(6@64"/Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/functions.h384655687#13#0#13#0#0"0(13@110"Expected unqualified-id before '<' token in /Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/definitions.h384655810#18446744073709551615#0#0(6@66"/Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/definitions.h384655801#13#0#13#0#0"0(6@66"/Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/definitions.h384655801#13#0#13#0#19"expected * before *0(4@39"Expected declaration before end of line384655810#2415#143#12(7@88"In file included from /Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/functions.cpp384655810#18446744073709551615#0#0(6@66"/Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/functions.cpp384655595#12#0#12#0#0"0(7@109"In file included from /Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/cplex/include/ilcplex/ilocplex.h384655810#18446744073709551615#0#0(6@87"/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/cplex/include/ilcplex/ilocplex.h384649320#27#0#27#0#0"0(7@113"In file included from /Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/ilomodel.h384655810#18446744073709551615#0#0(6@91"/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/ilomodel.h384647905#21#0#21#0#0"0(7@111"In file included from /Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/iloalg.h384655810#18446744073709551615#0#0(6@89"/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/iloalg.h384647904#21#0#21#0#0"0(7@111"In file included from /Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/iloenv.h384655810#18446744073709551615#0#0(6@89"/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/iloenv.h384655072#21#0#21#0#0"0(7@111"In file included from /Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/ilosys.h384655810#18446744073709551615#0#0(6@89"/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/ilosys.h384647905#355#0#355#0#0"0(7@81"In file included from /Developer/SDKs/MacOSX10.6.sdk/usr/include/c++/4.2.1/string384655810#18446744073709551615#0#0(6@59"/Developer/SDKs/MacOSX10.6.sdk/usr/include/c++/4.2.1/string299093391#47#0#47#0#0"0(7@93"In file included from /Developer/SDKs/MacOSX10.6.sdk/usr/include/c++/4.2.1/bits/char_traits.h384655810#18446744073709551615#0#0(6@71"/Developer/SDKs/MacOSX10.6.sdk/usr/include/c++/4.2.1/bits/char_traits.h299093389#46#0#46#0#0"0(7@94"In file included from /Developer/SDKs/MacOSX10.6.sdk/usr/include/c++/4.2.1/bits/stl_algobase.h384655810#18446744073709551615#0#0(6@72"/Developer/SDKs/MacOSX10.6.sdk/usr/include/c++/4.2.1/bits/stl_algobase.h299093389#70#0#70#0#0"0(7@81"In file included from /Developer/SDKs/MacOSX10.6.sdk/usr/include/c++/4.2.1/iosfwd384655810#18446744073709551615#0#0(6@59"/Developer/SDKs/MacOSX10.6.sdk/usr/include/c++/4.2.1/iosfwd299093391#46#0#46#0#0"0(7@114"In file included from /Developer/SDKs/MacOSX10.6.sdk/usr/include/c++/4.2.1/i686-apple-darwin10/x86_64/bits/c++io.h384655810#18446744073709551615#0#0(6@92"/Developer/SDKs/MacOSX10.6.sdk/usr/include/c++/4.2.1/i686-apple-darwin10/x86_64/bits/c++io.h299093391#43#0#43#0#0"0(13@134"Expected declaration before end of line in /Developer/SDKs/MacOSX10.6.sdk/usr/include/c++/4.2.1/i686-apple-darwin10/x86_64/bits/gthr.h384655810#18446744073709551615#0#0(6@91"/Developer/SDKs/MacOSX10.6.sdk/usr/include/c++/4.2.1/i686-apple-darwin10/x86_64/bits/gthr.h299093391#33#0#33#0#0"0(6@91"/Developer/SDKs/MacOSX10.6.sdk/usr/include/c++/4.2.1/i686-apple-darwin10/x86_64/bits/gthr.h299093391#33#0#33#0#19"expected * before *0(0#0#66"/Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/functions.cpp8624967328#1888"    cd /Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon    setenv LANG en_US.US-ASCII    /Developer/usr/bin/llvm-gcc-4.2 -x c++ -arch x86_64 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.6.sdk -mfix-and-continue -fvisibility-inlines-hidden -mmacosx-version-min=10.6 -gdwarf-2 -iquote /Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/build/Vehicles_1st_echelon.build/Debug/Vehicles_1st_echelon.build/Vehicles_1st_echelon-generated-files.hmap -I/Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/build/Vehicles_1st_echelon.build/Debug/Vehicles_1st_echelon.build/Vehicles_1st_echelon-own-target-headers.hmap -I/Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/build/Vehicles_1st_echelon.build/Debug/Vehicles_1st_echelon.build/Vehicles_1st_echelon-all-target-headers.hmap -iquote /Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/build/Vehicles_1st_echelon.build/Debug/Vehicles_1st_echelon.build/Vehicles_1st_echelon-project-headers.hmap -F/Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/build/Debug -I/Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/build/Debug/include -I/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/cplex/include -I/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include -I/Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/build/Vehicles_1st_echelon.build/Debug/Vehicles_1st_echelon.build/DerivedSources/x86_64 -I/Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/build/Vehicles_1st_echelon.build/Debug/Vehicles_1st_echelon.build/DerivedSources -DIL_STD -isysroot /Developer/SDKs/MacOSX10.6.sdk -c /Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/functions.cpp -o /Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/build/Vehicles_1st_echelon.build/Debug/Vehicles_1st_echelon.build/Objects-normal/x86_64/functions.o1#
+
+CCompileC build/Vehicles_1st_echelon.build/Debug/Vehicles_1st_echelon.build/Objects-normal/x86_64/main.o /Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/main.cpp normal x86_64 c++ com.apple.compilers.gcc.4_2
+s384971157.526760
+e384971161.035472
+r1
+xCompileC
+xbuild/Vehicles_1st_echelon.build/Debug/Vehicles_1st_echelon.build/Objects-normal/x86_64/main.o
+x/Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/main.cpp
+xnormal
+xx86_64
+xc++
+xcom.apple.compilers.gcc.4_2
+oIn file included from /Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/iloalg.h:21,
+o                 from /Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/ilomodel.h:21,
+o                 from /Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/cplex/include/ilcplex/ilocplex.h:27,
+o                 from /Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/main.cpp:2:
+o/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/iloenv.h:2724:1: warning: "ILOARRAY" redefined
+o/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/iloenv.h:2571:1: warning: this is the location of the previous definition
+lSLF07#2@69"Compile /Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/main.cpp384971157#384971161#0(718"In file included from /Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/iloalg.h:21,                 from /Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/ilomodel.h:21,                 from /Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/cplex/include/ilcplex/ilocplex.h:27,                 from /Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/main.cpp:2:/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/iloenv.h:2724:1: warning: "ILOARRAY" redefined/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/iloenv.h:2571:1: warning: this is the location of the previous definition2(22@20""ILOARRAY" redefined384971157#435#128#5(7@83"In file included from /Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/main.cpp384971157#18446744073709551615#0#0(6@61"/Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/main.cpp384971155#2#0#2#0#0"0(7@109"In file included from /Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/cplex/include/ilcplex/ilocplex.h384971157#18446744073709551615#0#0(6@87"/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/cplex/include/ilcplex/ilocplex.h384649320#27#0#27#0#0"0(7@113"In file included from /Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/ilomodel.h384971157#18446744073709551615#0#0(6@91"/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/ilomodel.h384647905#21#0#21#0#0"0(7@111"In file included from /Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/iloalg.h384971157#18446744073709551615#0#0(6@89"/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/iloalg.h384647904#21#0#21#0#0"0(13@113""ILOARRAY" redefined in /Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/iloenv.h384971157#18446744073709551615#0#0(6@89"/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/iloenv.h384655072#2724#0#2724#0#0"0(6@89"/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/iloenv.h384655072#2724#0#2724#0#13""*" redefined0(22@47"This is the location of the previous definition384971157#563#155#5(7@83"In file included from /Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/main.cpp384971157#18446744073709551615#0#0(6@61"/Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/main.cpp384971155#2#0#2#0#0"0(7@109"In file included from /Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/cplex/include/ilcplex/ilocplex.h384971157#18446744073709551615#0#0(6@87"/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/cplex/include/ilcplex/ilocplex.h384649320#27#0#27#0#0"0(7@113"In file included from /Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/ilomodel.h384971157#18446744073709551615#0#0(6@91"/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/ilomodel.h384647905#21#0#21#0#0"0(7@111"In file included from /Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/iloalg.h384971157#18446744073709551615#0#0(6@89"/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/iloalg.h384647904#21#0#21#0#0"0(13@140"This is the location of the previous definition in /Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/iloenv.h384971157#18446744073709551615#0#0(6@89"/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/iloenv.h384655072#2571#0#2571#0#0"0(6@89"/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/iloenv.h384655072#2571#0#2571#0#47"this is the location of the previous definition0(0#0#61"/Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/main.cpp8617299392#1832"    cd /Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch x86_64 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.6.sdk -mfix-and-continue -fvisibility-inlines-hidden -mmacosx-version-min=10.6 -gdwarf-2 -iquote /Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/build/Vehicles_1st_echelon.build/Debug/Vehicles_1st_echelon.build/Vehicles_1st_echelon-generated-files.hmap -I/Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/build/Vehicles_1st_echelon.build/Debug/Vehicles_1st_echelon.build/Vehicles_1st_echelon-own-target-headers.hmap -I/Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/build/Vehicles_1st_echelon.build/Debug/Vehicles_1st_echelon.build/Vehicles_1st_echelon-all-target-headers.hmap -iquote /Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/build/Vehicles_1st_echelon.build/Debug/Vehicles_1st_echelon.build/Vehicles_1st_echelon-project-headers.hmap -F/Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/build/Debug -I/Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/build/Debug/include -I/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/cplex/include -I/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include -I/Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/build/Vehicles_1st_echelon.build/Debug/Vehicles_1st_echelon.build/DerivedSources/x86_64 -I/Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/build/Vehicles_1st_echelon.build/Debug/Vehicles_1st_echelon.build/DerivedSources -DIL_STD -c /Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/main.cpp -o /Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/build/Vehicles_1st_echelon.build/Debug/Vehicles_1st_echelon.build/Objects-normal/x86_64/main.o0#
+
+CCompileC build/Vehicles_1st_echelon.build/Debug/Vehicles_1st_echelon.build/Objects-normal/x86_64/main.o /Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/main.cpp normal x86_64 c++ com.apple.compilers.llvmgcc42
+s384655809.187374
+e384655818.170593
+r1
+xCompileC
+xbuild/Vehicles_1st_echelon.build/Debug/Vehicles_1st_echelon.build/Objects-normal/x86_64/main.o
+x/Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/main.cpp
+xnormal
+xx86_64
+xc++
+xcom.apple.compilers.llvmgcc42
+oIn file included from /Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/iloalg.h:21,
+o                 from /Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/ilomodel.h:21,
+o                 from /Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/cplex/include/ilcplex/ilocplex.h:27,
+o                 from /Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/main.cpp:2:
+o/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/iloenv.h:2724:1: warning: "ILOARRAY" redefined
+o/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/iloenv.h:2571:1: warning: this is the location of the previous definition
+lSLF07#2@69"Compile /Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/main.cpp384655809#384655818#0(718"In file included from /Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/iloalg.h:21,                 from /Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/ilomodel.h:21,                 from /Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/cplex/include/ilcplex/ilocplex.h:27,                 from /Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/main.cpp:2:/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/iloenv.h:2724:1: warning: "ILOARRAY" redefined/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/iloenv.h:2571:1: warning: this is the location of the previous definition2(22@20""ILOARRAY" redefined384655809#435#128#5(7@83"In file included from /Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/main.cpp384655809#18446744073709551615#0#0(6@61"/Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/main.cpp384655626#2#0#2#0#0"0(7@109"In file included from /Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/cplex/include/ilcplex/ilocplex.h384655809#18446744073709551615#0#0(6@87"/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/cplex/include/ilcplex/ilocplex.h384649320#27#0#27#0#0"0(7@113"In file included from /Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/ilomodel.h384655809#18446744073709551615#0#0(6@91"/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/ilomodel.h384647905#21#0#21#0#0"0(7@111"In file included from /Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/iloalg.h384655809#18446744073709551615#0#0(6@89"/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/iloalg.h384647904#21#0#21#0#0"0(13@113""ILOARRAY" redefined in /Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/iloenv.h384655809#18446744073709551615#0#0(6@89"/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/iloenv.h384655072#2724#0#2724#0#0"0(6@89"/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/iloenv.h384655072#2724#0#2724#0#13""*" redefined0(22@47"This is the location of the previous definition384655809#563#155#5(7@83"In file included from /Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/main.cpp384655809#18446744073709551615#0#0(6@61"/Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/main.cpp384655626#2#0#2#0#0"0(7@109"In file included from /Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/cplex/include/ilcplex/ilocplex.h384655809#18446744073709551615#0#0(6@87"/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/cplex/include/ilcplex/ilocplex.h384649320#27#0#27#0#0"0(7@113"In file included from /Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/ilomodel.h384655809#18446744073709551615#0#0(6@91"/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/ilomodel.h384647905#21#0#21#0#0"0(7@111"In file included from /Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/iloalg.h384655809#18446744073709551615#0#0(6@89"/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/iloalg.h384647904#21#0#21#0#0"0(13@140"This is the location of the previous definition in /Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/iloenv.h384655809#18446744073709551615#0#0(6@89"/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/iloenv.h384655072#2571#0#2571#0#0"0(6@89"/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include/ilconcert/iloenv.h384655072#2571#0#2571#0#47"this is the location of the previous definition0(0#0#61"/Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/main.cpp8625569120#1878"    cd /Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon    setenv LANG en_US.US-ASCII    /Developer/usr/bin/llvm-gcc-4.2 -x c++ -arch x86_64 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.6.sdk -mfix-and-continue -fvisibility-inlines-hidden -mmacosx-version-min=10.6 -gdwarf-2 -iquote /Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/build/Vehicles_1st_echelon.build/Debug/Vehicles_1st_echelon.build/Vehicles_1st_echelon-generated-files.hmap -I/Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/build/Vehicles_1st_echelon.build/Debug/Vehicles_1st_echelon.build/Vehicles_1st_echelon-own-target-headers.hmap -I/Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/build/Vehicles_1st_echelon.build/Debug/Vehicles_1st_echelon.build/Vehicles_1st_echelon-all-target-headers.hmap -iquote /Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/build/Vehicles_1st_echelon.build/Debug/Vehicles_1st_echelon.build/Vehicles_1st_echelon-project-headers.hmap -F/Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/build/Debug -I/Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/build/Debug/include -I/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/cplex/include -I/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/include -I/Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/build/Vehicles_1st_echelon.build/Debug/Vehicles_1st_echelon.build/DerivedSources/x86_64 -I/Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/build/Vehicles_1st_echelon.build/Debug/Vehicles_1st_echelon.build/DerivedSources -DIL_STD -isysroot /Developer/SDKs/MacOSX10.6.sdk -c /Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/main.cpp -o /Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/build/Vehicles_1st_echelon.build/Debug/Vehicles_1st_echelon.build/Objects-normal/x86_64/main.o0#
+
+CLd /Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/build/Debug/Vehicles_1st_echelon normal x86_64
+s384971161.035667
+e384971163.381024
+r1
+xLd
+x/Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/build/Debug/Vehicles_1st_echelon
+xnormal
+xx86_64
+old: warning: IloMemoryManager::~IloMemoryManager()has different visibility (default) in /Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/lib/x86-64_darwin/static_pic/libconcert.a(iloalg.o) and (hidden) in /Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/build/Vehicles_1st_echelon.build/Debug/Vehicles_1st_echelon.build/Objects-normal/x86_64/main.o
+old: warning: IloMemoryManager::~IloMemoryManager()has different visibility (default) in /Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/lib/x86-64_darwin/static_pic/libconcert.a(iloalg.o) and (hidden) in /Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/build/Vehicles_1st_echelon.build/Debug/Vehicles_1st_echelon.build/Objects-normal/x86_64/main.o
+old: warning: IloMemory::getIndex(long) consthas different visibility (default) in /Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/lib/x86-64_darwin/static_pic/libconcert.a(iloalg.o) and (hidden) in /Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/build/Vehicles_1st_echelon.build/Debug/Vehicles_1st_echelon.build/Objects-normal/x86_64/main.o
+old: warning: IloEnvI::alloc(unsigned long) consthas different visibility (default) in /Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/lib/x86-64_darwin/static_pic/libconcert.a(iloenv.o) and (hidden) in /Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/build/Vehicles_1st_echelon.build/Debug/Vehicles_1st_echelon.build/Objects-normal/x86_64/main.o
+lSLF07#2@90"Link /Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/build/Debug/Vehicles_1st_echelon384971161#384971163#0(1460"ld: warning: IloMemoryManager::~IloMemoryManager()has different visibility (default) in /Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/lib/x86-64_darwin/static_pic/libconcert.a(iloalg.o) and (hidden) in /Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/build/Vehicles_1st_echelon.build/Debug/Vehicles_1st_echelon.build/Objects-normal/x86_64/main.old: warning: IloMemoryManager::~IloMemoryManager()has different visibility (default) in /Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/lib/x86-64_darwin/static_pic/libconcert.a(iloalg.o) and (hidden) in /Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/build/Vehicles_1st_echelon.build/Debug/Vehicles_1st_echelon.build/Objects-normal/x86_64/main.old: warning: IloMemory::getIndex(long) consthas different visibility (default) in /Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/lib/x86-64_darwin/static_pic/libconcert.a(iloalg.o) and (hidden) in /Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/build/Vehicles_1st_echelon.build/Debug/Vehicles_1st_echelon.build/Objects-normal/x86_64/main.old: warning: IloEnvI::alloc(unsigned long) consthas different visibility (default) in /Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/lib/x86-64_darwin/static_pic/libconcert.a(iloenv.o) and (hidden) in /Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/build/Vehicles_1st_echelon.build/Debug/Vehicles_1st_echelon.build/Objects-normal/x86_64/main.o4(22@353"IloMemoryManager::~IloMemoryManager()has different visibility (default) in /Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/lib/x86-64_darwin/static_pic/libconcert.a(iloalg.o) and (hidden) in /Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/build/Vehicles_1st_echelon.build/Debug/Vehicles_1st_echelon.build/Objects-normal/x86_64/main.o384971163#0#367#0(6@0"384971163#0#0#0#0#0"0(22@353"IloMemoryManager::~IloMemoryManager()has different visibility (default) in /Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/lib/x86-64_darwin/static_pic/libconcert.a(iloalg.o) and (hidden) in /Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/build/Vehicles_1st_echelon.build/Debug/Vehicles_1st_echelon.build/Objects-normal/x86_64/main.o384971163#367#367#0(6@0"384971163#0#0#0#0#0"0(22@347"IloMemory::getIndex(long) consthas different visibility (default) in /Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/lib/x86-64_darwin/static_pic/libconcert.a(iloalg.o) and (hidden) in /Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/build/Vehicles_1st_echelon.build/Debug/Vehicles_1st_echelon.build/Objects-normal/x86_64/main.o384971163#734#361#0(6@0"384971163#0#0#0#0#0"0(22@351"IloEnvI::alloc(unsigned long) consthas different visibility (default) in /Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/lib/x86-64_darwin/static_pic/libconcert.a(iloenv.o) and (hidden) in /Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/build/Vehicles_1st_echelon.build/Debug/Vehicles_1st_echelon.build/Objects-normal/x86_64/main.o384971163#1095#365#0(6@0"384971163#0#0#0#0#0"0(0#0#0"8618024416#858"    cd /Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon    setenv MACOSX_DEPLOYMENT_TARGET 10.6    /Developer/usr/bin/g++-4.2 -arch x86_64 -isysroot /Developer/SDKs/MacOSX10.6.sdk -L/Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/build/Debug -L/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/cplex/lib/x86-64_darwin/static_pic -L/Users/guvenince/Applications/IBM/ILOG/CPLEX_Studio125/concert/lib/x86-64_darwin/static_pic -F/Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/build/Debug -filelist /Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/build/Vehicles_1st_echelon.build/Debug/Vehicles_1st_echelon.build/Objects-normal/x86_64/Vehicles_1st_echelon.LinkFileList -mmacosx-version-min=10.6 -lilocplex -lconcert -lcplex -WI,-no_compact_unwind -o /Users/guvenince/Dropbox/xcodes/Vehicles_1st_echelon/build/Debug/Vehicles_1st_echelon0#
+
