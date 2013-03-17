@@ -27,11 +27,11 @@
 
 /* Begin PBXFileReference section */
 		08FB7796FE84155DC02AAC07 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		4520174716ED5B5D00842FE3 /* cplex.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = cplex.xcconfig; sourceTree = "<group>"; };
+		4520174716ED5B5D00842FE3 /* cplex_laptop.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = cplex_laptop.xcconfig; sourceTree = "<group>"; };
 		4520179116ED5FF800842FE3 /* definitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = definitions.h; sourceTree = "<group>"; };
 		4520179816ED609600842FE3 /* functions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = functions.h; sourceTree = "<group>"; };
 		4520179916ED609600842FE3 /* functions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = functions.cpp; sourceTree = "<group>"; };
-		452017B216ED62FE00842FE3 /* data.dat */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = data.dat; sourceTree = "<group>"; };
+		45ED80B616F6571C00B1D561 /* cplex_desktop.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = cplex_desktop.xcconfig; sourceTree = "<group>"; };
 		72A9889B16F55F6C00C64DA1 /* data.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = data.txt; sourceTree = "<group>"; };
 		8DD76F6C0486A84900D96B5E /* Vehicles_1st_echelon */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Vehicles_1st_echelon; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6859E8B029090EE04C91782 /* Vehicles_1st_echelon.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = Vehicles_1st_echelon.1; sourceTree = "<group>"; };
@@ -54,9 +54,9 @@
 				08FB7795FE84155DC02AAC07 /* Source */,
 				C6859E8C029090F304C91782 /* Documentation */,
 				1AB674ADFE9D54B511CA2CBB /* Products */,
-				452017B216ED62FE00842FE3 /* data.dat */,
 				72A9889B16F55F6C00C64DA1 /* data.txt */,
-				4520174716ED5B5D00842FE3 /* cplex.xcconfig */,
+				4520174716ED5B5D00842FE3 /* cplex_laptop.xcconfig */,
+				45ED80B616F6571C00B1D561 /* cplex_desktop.xcconfig */,
 			);
 			name = Vehicles_1st_echelon;
 			sourceTree = "<group>";
@@ -173,7 +173,7 @@
 		};
 		1DEB923608733DC60010E9CD /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4520174716ED5B5D00842FE3 /* cplex.xcconfig */;
+			baseConfigurationReference = 45ED80B616F6571C00B1D561 /* cplex_desktop.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;

@@ -16,7 +16,7 @@ int main() {
 #include "definitions.h"
 	try {
 		
-		const char* datafile  = "/Users/gince/Dropbox/xcodes/Vehicles_1st_echelon/data.txt";
+		const char* datafile  = "data.txt";
 		ifstream dfile(datafile);
 		if ( !dfile ) {
 			cerr << "ERROR: could not open file '" << datafile
