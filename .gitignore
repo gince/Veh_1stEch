@@ -2,4 +2,5 @@ DerivedData/
 Vehicles_1st_echelon-*/
 Vehicles_1st_echelon.1
 build/*.build/**
+build/Vehicles_1st_echelon.build/Debug/Vehicles_1st_echelon.build/build-state.dat
 model.lp
