@@ -1,5 +1,5 @@
 DerivedData/
 Vehicles_1st_echelon-*/
 Vehicles_1st_echelon.1
-build/**
+build/**/**
 model.lp
