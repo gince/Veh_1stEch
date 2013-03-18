@@ -140,6 +140,8 @@ public:
 typedef IloArray<IloNumArray> NumMatrix;
 typedef IloArray<IloNumArray2> Num3dMatrix;
 
+typedef IloArray<IloIntArray> IntMatrix;
+
 typedef IloArray<IloBoolVarArray> BoolVarMatrix;
 typedef IloArray<BoolVarMatrix> BoolVar3dMatrix;
 
@@ -161,8 +163,8 @@ extern IloInt T;
 extern IloInt K;
 extern IloInt B;
 extern IloInt C;
-extern IloInt Q;
-extern IloInt i, j, t, k, b, c, q;
+extern IloInt H;
+extern IloInt i, j, t, k, h, b;
 extern IloInt a1, a2, a3;
 
 extern vector<vector<int> > nStates;
@@ -178,29 +180,27 @@ extern set<int> bundle;
 extern vector<set<int> > bundles;
 
 //PARAMETERS
-extern IloNumArray S; //not used here
+extern IntMatrix tF;
+extern IntMatrix tB;
 extern IloNumArray P;
+extern IloInt V;
+extern IloNumArray w;
+extern IloNum W;
+extern IloIntArray Vin;
+extern IloNumArray S; //not used here
 extern IloNumArray teta; //not used here
 extern IloNumArray tau; //not used here
 extern IloNumArray pComm; //not used here
 extern IloNumArray goal; //not used here
 extern IloNumArray pGoal; //not used here
 extern NumMatrix drtn; //not used here
-extern NumMatrix tF;
-extern NumMatrix tB;
 extern NumMatrix D; //not used here
-extern NumMatrix tmin;
-extern NumMatrix tmax;
-extern IloInt V;
-extern IloNumArray w;
-extern IloNum W;
 
 //VARIABLES
 extern IloNumVar d1, d2; //not used here
 extern NumVar3dMatrix s; //not used here
 extern NumVarMatrix sT; //not used here
 extern NumVar3dMatrix I; //not used here
-extern NumVar4dMatrix x; //not used here
 extern IloNumVarArray Sk; //not used here
 
 extern IntVar3dMatrix J; //not used here
@@ -210,15 +210,14 @@ extern IntVar6dMatrix X; //not used here
 extern IntVar5dMatrix p; //not used here
 extern IntVar3dMatrix m; //not used here
 
+extern NumVar5dMatrix x;
 extern IloIntVar tV;
 extern IloIntVarArray vT;
 extern IntVarMatrix v;
 extern IntVarMatrix g;
 extern IntVarMatrix rho;
-extern IntVar3dMatrix y;
-extern IntVar3dMatrix gama;
-extern IntVarMatrix vSF;
-
-extern BoolVarMatrix z;
+extern IntVar4dMatrix y;
+extern IntVar4dMatrix gama;
+extern IntVar3dMatrix vSF;
 
 #endif /* DISASTER_ALLOCATION_DEFS_H_ */

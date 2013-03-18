@@ -20,12 +20,11 @@ using namespace std;
 
 IloInt M = 3;
 IloInt N = 5;
-IloInt T = 121;
+IloInt T = 5;
 IloInt K = 3;
 IloInt B = 8;
-IloInt C = 315;// = (teta[0]+tau[0])*(teta[1]+tau[1])*(teta[2]+tau[2]);
-IloInt Q = 5;
-IloInt i, j, t, k, b, c, q;
+IloInt H = 25;
+IloInt i, j, t, k, h, b;
 IloInt a1, a2, a3;
 
 vector<vector<int> > nStates(N, vector<int>(T));
@@ -46,24 +45,25 @@ IloNumArray P(env);
 IloInt V;
 IloNumArray w(env);
 IloNum W;
+IloIntArray Vin(env);
+NumMatrix drtn(env);
+IntMatrix tF(env);
+IntMatrix tB(env);
+
+//not used here
 IloNumArray teta(env);
 IloNumArray tau(env);
 IloNumArray pComm(env);
 IloNumArray goal(env);
 IloNumArray pGoal(env);
-NumMatrix drtn(env);
-NumMatrix tF(env);
-NumMatrix tB(env);
 NumMatrix D(env);
-NumMatrix tmin(env);
-NumMatrix tmax(env);
 
 
 //VARIABLES
 NumVar3dMatrix s(env, T);
 NumVarMatrix sT(env, T);
 NumVar3dMatrix I(env, T);
-NumVar4dMatrix x(env, T);
+NumVar5dMatrix x(env, T);
 IloNumVarArray Sk(env, K);
 
 IntVar3dMatrix J(env, T);
@@ -80,11 +80,9 @@ IloIntVarArray vT(env, T);
 IntVarMatrix v(env, T);
 IntVarMatrix g(env, T);
 IntVarMatrix rho(env, T);
-IntVar3dMatrix y(env, T);
-IntVar3dMatrix gama(env, T);
-IntVarMatrix vSF(env, Q);
-
-BoolVarMatrix z(env, T);
+IntVar4dMatrix y(env, T);
+IntVar4dMatrix gama(env, T);
+IntVar3dMatrix vSF(env, T);
 
 vector<SNode> getSNodes() {
 	vector<SNode> suppliers;
@@ -255,10 +253,10 @@ void toLatexXY(IloCplex cplex, vector<DNode> dstrcts) {
 		}
 		outfile << endl <<t;
 		for(k=0; k < K; k++)
-			outfile << "& " << cplex.getValue(x[t][i][j][k]);
-		outfile << "& " << cplex.getValue(y[t][i][j]);
-		outfile << "& " << cplex.getValue(gama[t][j][i]);
-		outfile << "& " << cplex.getValue(g[t][i]);
+//			outfile << "& " << cplex.getValue(x[t][i][j][k]);
+//		outfile << "& " << cplex.getValue(y[t][i][j]);
+//		outfile << "& " << cplex.getValue(gama[t][j][i]);
+//		outfile << "& " << cplex.getValue(g[t][i]);
 		outfile << "& " << cplex.getValue(v[t][i]);
 		counter += 1;
 		outfile << "\\\\\\hline";

@@ -24,7 +24,7 @@ int main() {
 			throw (-1);
 		}
 		
-		dfile >> P >> tF >> tB >> tmin >> tmax >> w >> W >> V;
+		dfile >> P >> Vin >> tF >> tB >> w >> W >> V;
 		
 		vector<DNode> districts = getDNodes(); // AVC, BAH, BAK, ..., SIL;
 		vector<SNode> suppliers = getSNodes();
@@ -42,39 +42,50 @@ int main() {
 		}
 		
 		for (t=1; t < T; t++) {
-			y[t] = IntVarMatrix(env, M);
-			gama[t] = IntVarMatrix(env, N);
-			z[t] = IloBoolVarArray(env, N);
+			y[t] = IntVar3dMatrix(env, H);
+			gama[t] = IntVar3dMatrix(env, H);
+			x[t] = NumVar4dMatrix(env, H);
+			vSF[t] = IntVarMatrix(env, N);
+			for (h = 1; h < H; h++) {
+				y[t][h] = IntVarMatrix(env, M);
+				gama[t][h] = IntVarMatrix(env, N);
+				x[t][h] = NumVar3dMatrix(env, M);
+				for(i=0; i < M; i++) {
+					y[t][h][i] = IloIntVarArray(env, N, 0, tP);
+					x[t][h][i] = NumVarMatrix(env, N);
+					for(j=0; j < N; j++) {
+						x[t][h][i][j] = IloNumVarArray(env, K, 0, tP);
+					}
+				}
+				for(j=0; j < N; j++) {
+					gama[t][h][j] = IloIntVarArray(env, M, 0, tP);
+				}
+			}
 			for(j=0; j < N; j++) {
-				gama[t][j] = IloIntVarArray(env, M, 0, tP);
-			}
-			for(i=0; i < M; i++) {
-				y[t][i] = IloIntVarArray(env, N, 0, tP);
+				vSF[t][j] = IloIntVarArray(env, K, 0, tP);
 			}
 		}
-		
-		for (q = 0; q < Q; q++) {
-			vSF[q] = IloIntVarArray(env, N, 0, tP);
-		}
-		
 		
 		//OBJECTIVE0 :: Minimize total shortfall in vehicle capacity
 		IloExpr tvSF(env);
-		for (q = 0; q < Q; q++)
+		for (t = 1; t < T; t++)
 			for (j = 0; j < N; j++)
-				tvSF += vSF[q][j];
+				for (k = 0; k < K; k++)
+					tvSF += vSF[t][j][k];
 		
 		IloExpr tvB(env);
 		for (t = 1; t < T; t++)
-			for (j = 0; j < N; j++)
-				for (i = 0; i < M; i++)
-					tvB += gama[t][j][i];
+			for (h = 1; h < H; h++)
+				for (j = 0; j < N; j++)
+					for (i = 0; i < M; i++)
+						tvB += gama[t][h][j][i];
 		
 		IloExpr tvF(env);
 		for (t = 1; t < T; t++)
-			for (j = 0; j < N; j++)
-				for (i = 0; i < M; i++)
-					tvF += y[t][i][j];
+			for (h = 1; h < H; h++)
+				for (j = 0; j < N; j++)
+					for (i = 0; i < M; i++)
+						tvF += y[t][h][i][j];
 		
 		vector<IloObjective> objs;
 		vector<IloExpr> Z;
@@ -93,7 +104,7 @@ int main() {
 		objs.push_back(maxtvF);
 		
 		//Adding objectives to env
-		mod.add(objs[1]);
+		mod.add(objs[0]);
 		
 		cout << "RESTRICTIONS" << endl;
 		//		mod.add(tvB >= 117);
@@ -139,7 +150,7 @@ int main() {
 		 }
 		 }
 		 */	
-		mod.add(tvSF == 0);
+		//		mod.add(tvSF == 0);
 		
 		//VEHICLE CONSTRAINTS
 		cout << "CONSTRAINT V-1" << endl;
@@ -162,7 +173,7 @@ int main() {
 		
 		cout << "CONSTRAINT V-3" << endl;
 		for (i = 0; i < M; i++)
-			mod.add(g[0][i] == v[0][i]);
+			mod.add(g[0][i] == Vin[i]);
 		
 		cout << "CONSTRAINT V-4" << endl;
 		for (j = 0; j < N; j++)
@@ -173,10 +184,12 @@ int main() {
 			for (i = 0; i < M; i++) {
 				IloExpr yJ(env);
 				IloExpr gamaJ(env);
-				for (j = 0; j < N; j++) {
-					yJ += y[t][i][j];
-					if (t > tB[j][i]) {
-						gamaJ += gama[t-tB[j][i]][j][i];
+				for (h = 1; h < H; h++) {
+					for (j = 0; j < N; j++) {
+						yJ += y[t][h][i][j];
+						if (t > ((h + tB[j][i]) % 24)) {
+							gamaJ += gama[t - ((h + tB[j][i]) % 24)][h][j][i];
+						}
 					}
 				}
 				mod.add(g[t-1][i] + v[t][i] + gamaJ - g[t][i] - yJ == 0);
@@ -184,40 +197,41 @@ int main() {
 				gamaJ.end();
 			}
 		}
-		
-		cout << "CONSTRAINT V-6" << endl;
-		for (t = 1; t < T; t++)
-			for (j = 0; j < N; j++) {
-				IloExpr yI(env);
-				IloExpr gamaI(env);
-				for (i = 0; i < M; i++) {
-					if (t > tF[i][j])
-						yI += y[t-tF[i][j]][i][j];
-					gamaI += gama[t][j][i];
-				}
-				mod.add(rho[t-1][j] + yI - rho[t][j] - gamaI == 0);
-				yI.end();
-				gamaI.end();
-			}
-		
-		cout << "CONSTRAINT V-7" << endl;
-		IloExpr tw(env);
-		for(k = 1; k < K; k++)
-			tw += w[k];
-		for (q = 0; q < Q; q++)
-			for (j = 0; j < N; j++){
-				IloExpr yIT(env);
-				for (t = tmin[j][q]; t <= tmax[j][q]; t++)
-					for (i = 0; i < M; i++) {
-						if (t > tF[i][j])
-							yIT += y[t - tF[i][j]][i][j];
-					}
-				mod.add(yIT + vSF[q][j] - ceil((17/W)*P[j]) == 0);
-				//				mod.add(yI - (tw/W)*P[j] >= 0);
-				yIT.end();
-			}
-		tw.end();
-		
+
+		/*		
+		 cout << "CONSTRAINT V-6" << endl;
+		 for (t = 1; t < T; t++)
+		 for (j = 0; j < N; j++) {
+		 IloExpr yI(env);
+		 IloExpr gamaI(env);
+		 for (i = 0; i < M; i++) {
+		 if (t > tF[i][j])
+		 yI += y[t-tF[i][j]][i][j];
+		 gamaI += gama[t][j][i];
+		 }
+		 mod.add(rho[t-1][j] + yI - rho[t][j] - gamaI == 0);
+		 yI.end();
+		 gamaI.end();
+		 }
+		 
+		 cout << "CONSTRAINT V-7" << endl;
+		 IloExpr tw(env);
+		 for(k = 1; k < K; k++)
+		 tw += w[k];
+		 for (q = 0; q < Q; q++)
+		 for (j = 0; j < N; j++){
+		 IloExpr yIT(env);
+		 for (t = tmin[j][q]; t <= tmax[j][q]; t++)
+		 for (i = 0; i < M; i++) {
+		 if (t > tF[i][j])
+		 yIT += y[t - tF[i][j]][i][j];
+		 }
+		 mod.add(yIT + vSF[q][j] - ceil((17/W)*P[j]) == 0);
+		 //				mod.add(yI - (tw/W)*P[j] >= 0);
+		 yIT.end();
+		 }
+		 tw.end();
+		 */		
 		/*		cout << "CONSTRAINT V-8" << endl;
 		 for (q = 0; q < Q; q++) {
 		 for (j = 0; j < N; j++) {				
@@ -248,204 +262,198 @@ int main() {
 		cplex.extract(mod);
 		cplex.exportModel("model.lp");
 		
-		
-		cplex.solve();
-		
-		cplex.out() << "solution status = " << cplex.getStatus() << endl;
-		cplex.out() << "objective value = " << cplex.getObjValue() << endl;
 		/*		
-		 cout << "TEST SON" << endl;
+		 cplex.solve();
+		 
+		 cplex.out() << "solution status = " << cplex.getStatus() << endl;
+		 cplex.out() << "objective value = " << cplex.getObjValue() << endl;
+		 */
+		cout << "TEST SON" << endl;
+		/*		
+		 IloExpr vTotal(env);
+		 for (t = 0; t < T; t++) {
+		 for (i = 0; i < M; i++)
+		 vTotal += v[t][i];
+		 }
+		 cout << "# Vehicles = " << cplex.getValue(vTotal) << endl;
+		 cout << "Total vehicle shortfall = " << cplex.getObjValue() << endl;
+		 cout << "u[t][j]-------------------" << endl;
+		 for(q = 0; q < Q; q++){
+		 cout << "DAY " << q << " __________________" << endl;
+		 for(j = 0; j < N; j++){
+		 if (cplex.getValue(vSF[q][j]) > 0) {
+		 cout << "j = " << j + 1 << " > " << cplex.getValue(vSF[q][j]) << endl;
+		 }
+		 }
+		 }
+		 
+		 cout << "vT[t]-------------------" << endl;
+		 for(t = 0; t < T; t++)
+		 if (cplex.getValue(vT[t]) > 0){
+		 cout << "t = " << t << "\t > ";
+		 cout << cplex.getValue(vT[t]) << endl;
+		 }
+		 
+		 cout << "v[t][i]-------------------" << endl;
+		 for(t = 0; t < T; t++){
+		 for(i = 0; i < M; i++){
+		 if (cplex.getValue(v[t][i]) > 0) {
+		 cout << "t = " << t << ", i = " << i + 1 << " > " << cplex.getValue(v[t][i]) << "\t" << endl;
+		 }
+		 }
+		 }
+		 
+		 cout << "vehicle flow around supplier sites" << endl;
+		 cout << "departures from suppliers" << endl;
+		 for (t = 1; t < 121; t++) {
+		 if ((t - 1) % 24 == 0) {
+		 cout << "DAY " << ceil(t/24) + 1 << "-----------" << endl;
+		 }
+		 for (i = 0; i < M; i++) {
+		 //				cout << "i = " << i + 1 << endl;
 		 for (j = 0; j < N; j++) {
-		 for (t = 1; t < T; t++) {
-		 if (cplex.getValue(z[t][j]) > 0) {
-		 cout << "t = " << t << ", j = " << j << " : " << cplex.getValue(z[t][j]) << endl;
+		 if (cplex.getValue(y[t][i][j]) > 0) {
+		 cout << cplex.getValue(y[t][i][j]) << " at t = " << t << " from i = " << i + 1 << " to j = " << j + 1 << endl;
 		 }
 		 }
+		 }
+		 }
+		 
+		 cout << "arrivals at suppliers" << endl;
+		 for (t = 1; t < 121; t++) {
+		 if ((t - 1) % 24 == 0) {
+		 cout << "DAY " << ceil(t/24) + 1 << "-----------" << endl;
+		 }
+		 for (i = 0; i < M; i++) {
+		 //				cout << "i = " << i + 1 << endl;
+		 for (j = 0; j < N; j++) {
+		 if (cplex.getValue(gama[t][j][i]) > 0) {
+		 cout << cplex.getValue(gama[t][j][i]) << " at t = " << t + tB[j][i]<< " to i = " << i + 1 << " from j = " << j + 1 << endl;
+		 }
+		 }
+		 }
+		 }
+		 
+		 cout << "vehicle flow around demand sites" << endl;
+		 cout << "departures from demand sites" << endl;
+		 for (t = 1; t < 121; t++) {
+		 if ((t - 1) % 24 == 0) {
+		 cout << "DAY " << ceil(t/24) + 1 << "-----------" << endl;
+		 }
+		 for (j = 0; j < N; j++) {
+		 for (i = 0; i < M; i++) {
+		 //				cout << "i = " << i + 1 << endl;
+		 if (cplex.getValue(gama[t][j][i]) > 0) {
+		 cout << cplex.getValue(gama[t][j][i]) << " at t = " << t << " from j = " << j + 1 << " to i = " << i + 1 << endl;
+		 }
+		 }
+		 }
+		 }
+		 
+		 cout << "arrivals at demand sites" << endl;
+		 for (t = 1; t < 121; t++) {
+		 if ((t - 1) % 24 == 0) {
+		 cout << "DAY " << ceil(t/24) + 1 << "-----------" << endl;
+		 }
+		 for (j = 0; j < N; j++) {
+		 for (i = 0; i < M; i++) {
+		 //				cout << "i = " << i + 1 << endl;
+		 if (cplex.getValue(y[t][i][j]) > 0) {
+		 cout << cplex.getValue(y[t][i][j]) << " at t = " << t + tF[i][j]<< " to j = " << j + 1 << " from i = " << i + 1 << endl;
+		 }
+		 }
+		 }
+		 }
+		 
+		 //		cout << "to the next day " << cplex.getValue(g[24][i]) << endl;
+		 cout << "_________________________" << endl;
+		 cout << "vehicles flow" << endl;
+		 cout << "DAY 1 __________________" << endl;
+		 cout << "i to j__________________" << endl;
+		 for (j = 0; j < N; j++) {
+		 for (i = 0; i < M; i++)
+		 for (t = 1; t < 25; t++)
+		 if (cplex.getValue(y[t][i][j]) > 0)
+		 cout << "t = " << t << ", i = " << i + 1 << ", j = " << j + 1 << " > " << cplex.getValue(y[t][i][j]) << endl;
+		 cout << "_________________________" << endl;
+		 }
+		 cout << "j to i__________________" << endl;
+		 for (j = 0; j < N; j++) {
+		 for (i = 0; i < M; i++)
+		 for (t = 1; t < 25; t++)
+		 if (cplex.getValue(gama[t][j][i]) > 0)
+		 cout << "t = " << t << ", j = " << j + 1 << ", i = " << i + 1 << " > " << cplex.getValue(gama[t][j][i]) << endl;
+		 cout << "_________________________" << endl;
+		 }
+		 cout << "DAY 2 __________________" << endl;
+		 cout << "i to j__________________" << endl;
+		 for (j = 0; j < N; j++) {
+		 for (i = 0; i < M; i++)
+		 for (t = 25; t < 49; t++)
+		 if (cplex.getValue(y[t][i][j]) > 0)
+		 cout << "t = " << t << ", i = " << i + 1 << ", j = " << j + 1 << " > " << cplex.getValue(y[t][i][j]) << endl;
+		 cout << "_________________________" << endl;
+		 }
+		 cout << "j to i__________________" << endl;
+		 for (j = 0; j < N; j++) {
+		 for (i = 0; i < M; i++)
+		 for (t = 25; t < 49; t++)
+		 if (cplex.getValue(gama[t][j][i]) > 0)
+		 cout << "t = " << t << ", j = " << j + 1 << ", i = " << i + 1 << " > " << cplex.getValue(gama[t][j][i]) << endl;
+		 cout << "_________________________" << endl;
+		 }
+		 cout << "DAY 3 __________________" << endl;
+		 cout << "i to j__________________" << endl;
+		 for (j = 0; j < N; j++) {
+		 for (i = 0; i < M; i++)
+		 for (t = 49; t < 73; t++)
+		 if (cplex.getValue(y[t][i][j]) > 0)
+		 cout << "t = " << t << ", i = " << i + 1 << ", j = " << j + 1 << " > " << cplex.getValue(y[t][i][j]) << endl;
+		 cout << "_________________________" << endl;
+		 }
+		 cout << "j to i__________________" << endl;
+		 for (j = 0; j < N; j++) {
+		 for (i = 0; i < M; i++)
+		 for (t = 49; t < 73; t++)
+		 if (cplex.getValue(gama[t][j][i]) > 0)
+		 cout << "t = " << t << ", j = " << j + 1 << ", i = " << i + 1 << " > " << cplex.getValue(gama[t][j][i]) << endl;
+		 cout << "_________________________" << endl;
+		 }
+		 cout << "DAY 4 __________________" << endl;
+		 cout << "i to j__________________" << endl;
+		 for (j = 0; j < N; j++) {
+		 for (i = 0; i < M; i++)
+		 for (t = 73; t < 97; t++)
+		 if (cplex.getValue(y[t][i][j]) > 0)
+		 cout << "t = " << t << ", i = " << i + 1 << ", j = " << j + 1 << " > " << cplex.getValue(y[t][i][j]) << endl;
+		 cout << "_________________________" << endl;
+		 }
+		 cout << "j to i__________________" << endl;
+		 for (j = 0; j < N; j++) {
+		 for (i = 0; i < M; i++)
+		 for (t = 73; t < 97; t++)
+		 if (cplex.getValue(gama[t][j][i]) > 0)
+		 cout << "t = " << t << ", j = " << j + 1 << ", i = " << i + 1 << " > " << cplex.getValue(gama[t][j][i]) << endl;
+		 cout << "_________________________" << endl;
+		 }
+		 cout << "DAY 5 __________________" << endl;
+		 cout << "i to j__________________" << endl;
+		 for (j = 0; j < N; j++) {
+		 for (i = 0; i < M; i++)
+		 for (t = 97; t < 121; t++)
+		 if (cplex.getValue(y[t][i][j]) > 0)
+		 cout << "t = " << t << ", i = " << i + 1 << ", j = " << j + 1 << " > " << cplex.getValue(y[t][i][j]) << endl;
+		 cout << "_________________________" << endl;
+		 }
+		 cout << "j to i__________________" << endl;
+		 for (j = 0; j < N; j++) {
+		 for (i = 0; i < M; i++)
+		 for (t = 97; t < 121; t++)
+		 if (cplex.getValue(gama[t][j][i]) > 0)
+		 cout << "t = " << t << ", j = " << j + 1 << ", i = " << i + 1 << " > " << cplex.getValue(gama[t][j][i]) << endl;
+		 cout << "_________________________" << endl;
 		 }
 		 */
-		IloExpr vTotal(env);
-		for (t = 0; t < T; t++) {
-			for (i = 0; i < M; i++)
-				vTotal += v[t][i];
-		}
-		cout << "# Vehicles = " << cplex.getValue(vTotal) << endl;
-		cout << "Total vehicle shortfall = " << cplex.getObjValue() << endl;
-		cout << "u[t][j]-------------------" << endl;
-		for(q = 0; q < Q; q++){
-			cout << "DAY " << q << " __________________" << endl;
-			for(j = 0; j < N; j++){
-				if (cplex.getValue(vSF[q][j]) > 0) {
-					cout << "j = " << j + 1 << " > " << cplex.getValue(vSF[q][j]) << endl;
-				}
-			}
-		}
-		
-		cout << "vT[t]-------------------" << endl;
-		for(t = 0; t < T; t++)
-			if (cplex.getValue(vT[t]) > 0){
-				cout << "t = " << t << "\t > ";
-				cout << cplex.getValue(vT[t]) << endl;
-			}
-		
-		cout << "v[t][i]-------------------" << endl;
-		for(t = 0; t < T; t++){
-			for(i = 0; i < M; i++){
-				if (cplex.getValue(v[t][i]) > 0) {
-					cout << "t = " << t << ", i = " << i + 1 << " > " << cplex.getValue(v[t][i]) << "\t" << endl;
-				}
-			}
-		}
-		
-		cout << "vehicle flow around supplier sites" << endl;
-		cout << "departures from suppliers" << endl;
-		for (t = 1; t < 121; t++) {
-			if ((t - 1) % 24 == 0) {
-				cout << "DAY " << ceil(t/24) + 1 << "-----------" << endl;
-			}
-			for (i = 0; i < M; i++) {
-				//				cout << "i = " << i + 1 << endl;
-				for (j = 0; j < N; j++) {
-					if (cplex.getValue(y[t][i][j]) > 0) {
-						cout << cplex.getValue(y[t][i][j]) << " at t = " << t << " from i = " << i + 1 << " to j = " << j + 1 << endl;
-					}
-				}
-			}
-		}
-		
-		cout << "arrivals at suppliers" << endl;
-		for (t = 1; t < 121; t++) {
-			if ((t - 1) % 24 == 0) {
-				cout << "DAY " << ceil(t/24) + 1 << "-----------" << endl;
-			}
-			for (i = 0; i < M; i++) {
-				//				cout << "i = " << i + 1 << endl;
-				for (j = 0; j < N; j++) {
-					if (cplex.getValue(gama[t][j][i]) > 0) {
-						cout << cplex.getValue(gama[t][j][i]) << " at t = " << t + tB[j][i]<< " to i = " << i + 1 << " from j = " << j + 1 << endl;
-					}
-				}
-			}
-		}
-		
-		cout << "vehicle flow around demand sites" << endl;
-		cout << "departures from demand sites" << endl;
-		for (t = 1; t < 121; t++) {
-			if ((t - 1) % 24 == 0) {
-				cout << "DAY " << ceil(t/24) + 1 << "-----------" << endl;
-			}
-			for (j = 0; j < N; j++) {
-				for (i = 0; i < M; i++) {
-					//				cout << "i = " << i + 1 << endl;
-					if (cplex.getValue(gama[t][j][i]) > 0) {
-						cout << cplex.getValue(gama[t][j][i]) << " at t = " << t << " from j = " << j + 1 << " to i = " << i + 1 << endl;
-					}
-				}
-			}
-		}
-		
-		cout << "arrivals at demand sites" << endl;
-		for (t = 1; t < 121; t++) {
-			if ((t - 1) % 24 == 0) {
-				cout << "DAY " << ceil(t/24) + 1 << "-----------" << endl;
-			}
-			for (j = 0; j < N; j++) {
-				for (i = 0; i < M; i++) {
-					//				cout << "i = " << i + 1 << endl;
-					if (cplex.getValue(y[t][i][j]) > 0) {
-						cout << cplex.getValue(y[t][i][j]) << " at t = " << t + tF[i][j]<< " to j = " << j + 1 << " from i = " << i + 1 << endl;
-					}
-				}
-			}
-		}
-		
-		//		cout << "to the next day " << cplex.getValue(g[24][i]) << endl;
-		cout << "_________________________" << endl;
-		cout << "vehicles flow" << endl;
-		cout << "DAY 1 __________________" << endl;
-		cout << "i to j__________________" << endl;
-		for (j = 0; j < N; j++) {
-			for (i = 0; i < M; i++)
-				for (t = 1; t < 25; t++)
-					if (cplex.getValue(y[t][i][j]) > 0)
-						cout << "t = " << t << ", i = " << i + 1 << ", j = " << j + 1 << " > " << cplex.getValue(y[t][i][j]) << endl;
-			cout << "_________________________" << endl;
-		}
-		cout << "j to i__________________" << endl;
-		for (j = 0; j < N; j++) {
-			for (i = 0; i < M; i++)
-				for (t = 1; t < 25; t++)
-					if (cplex.getValue(gama[t][j][i]) > 0)
-						cout << "t = " << t << ", j = " << j + 1 << ", i = " << i + 1 << " > " << cplex.getValue(gama[t][j][i]) << endl;
-			cout << "_________________________" << endl;
-		}
-		cout << "DAY 2 __________________" << endl;
-		cout << "i to j__________________" << endl;
-		for (j = 0; j < N; j++) {
-			for (i = 0; i < M; i++)
-				for (t = 25; t < 49; t++)
-					if (cplex.getValue(y[t][i][j]) > 0)
-						cout << "t = " << t << ", i = " << i + 1 << ", j = " << j + 1 << " > " << cplex.getValue(y[t][i][j]) << endl;
-			cout << "_________________________" << endl;
-		}
-		cout << "j to i__________________" << endl;
-		for (j = 0; j < N; j++) {
-			for (i = 0; i < M; i++)
-				for (t = 25; t < 49; t++)
-					if (cplex.getValue(gama[t][j][i]) > 0)
-						cout << "t = " << t << ", j = " << j + 1 << ", i = " << i + 1 << " > " << cplex.getValue(gama[t][j][i]) << endl;
-			cout << "_________________________" << endl;
-		}
-		cout << "DAY 3 __________________" << endl;
-		cout << "i to j__________________" << endl;
-		for (j = 0; j < N; j++) {
-			for (i = 0; i < M; i++)
-				for (t = 49; t < 73; t++)
-					if (cplex.getValue(y[t][i][j]) > 0)
-						cout << "t = " << t << ", i = " << i + 1 << ", j = " << j + 1 << " > " << cplex.getValue(y[t][i][j]) << endl;
-			cout << "_________________________" << endl;
-		}
-		cout << "j to i__________________" << endl;
-		for (j = 0; j < N; j++) {
-			for (i = 0; i < M; i++)
-				for (t = 49; t < 73; t++)
-					if (cplex.getValue(gama[t][j][i]) > 0)
-						cout << "t = " << t << ", j = " << j + 1 << ", i = " << i + 1 << " > " << cplex.getValue(gama[t][j][i]) << endl;
-			cout << "_________________________" << endl;
-		}
-		cout << "DAY 4 __________________" << endl;
-		cout << "i to j__________________" << endl;
-		for (j = 0; j < N; j++) {
-			for (i = 0; i < M; i++)
-				for (t = 73; t < 97; t++)
-					if (cplex.getValue(y[t][i][j]) > 0)
-						cout << "t = " << t << ", i = " << i + 1 << ", j = " << j + 1 << " > " << cplex.getValue(y[t][i][j]) << endl;
-			cout << "_________________________" << endl;
-		}
-		cout << "j to i__________________" << endl;
-		for (j = 0; j < N; j++) {
-			for (i = 0; i < M; i++)
-				for (t = 73; t < 97; t++)
-					if (cplex.getValue(gama[t][j][i]) > 0)
-						cout << "t = " << t << ", j = " << j + 1 << ", i = " << i + 1 << " > " << cplex.getValue(gama[t][j][i]) << endl;
-			cout << "_________________________" << endl;
-		}
-		cout << "DAY 5 __________________" << endl;
-		cout << "i to j__________________" << endl;
-		for (j = 0; j < N; j++) {
-			for (i = 0; i < M; i++)
-				for (t = 97; t < 121; t++)
-					if (cplex.getValue(y[t][i][j]) > 0)
-						cout << "t = " << t << ", i = " << i + 1 << ", j = " << j + 1 << " > " << cplex.getValue(y[t][i][j]) << endl;
-			cout << "_________________________" << endl;
-		}
-		cout << "j to i__________________" << endl;
-		for (j = 0; j < N; j++) {
-			for (i = 0; i < M; i++)
-				for (t = 97; t < 121; t++)
-					if (cplex.getValue(gama[t][j][i]) > 0)
-						cout << "t = " << t << ", j = " << j + 1 << ", i = " << i + 1 << " > " << cplex.getValue(gama[t][j][i]) << endl;
-			cout << "_________________________" << endl;
-		}
 		/*		
 		 cout << "vehicles from j to i over time" << endl;
 		 cout << "DAY 1 __________________" << endl;
