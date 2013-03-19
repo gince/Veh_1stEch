@@ -37,8 +37,12 @@ int main() {
 		vT = IloIntVarArray(env, T, 0, tP);
 		for (t=0; t < T; t++) {
 			v[t] = IloIntVarArray(env, M, 0, tP);
-			g[t] = IloIntVarArray(env, M, 0, tP);
-			rho[t] = IloIntVarArray(env, N, 0, tP);
+			g[t] = IntVarMatrix(env, H);
+			rho[t] = IntVarMatrix(env, H);
+			for (h=1; h < H; h++) {
+				g[t,h] = IloIntVarArray(env, M, 0, tP);
+				rho[t,h] = IloIntVarArray(env, N, 0, tP);
+			}
 		}
 		
 		for (t=1; t < T; t++) {
@@ -184,19 +188,19 @@ int main() {
 		cout << "CONSTRAINT V-5" << endl;
 		for (t = 1; t < T; t++) {
 			for (i = 0; i < M; i++) {
-				IloExpr yJ(env);
-				IloExpr gamaJ(env);
 				for (h = 1; h < H; h++) {
+					IloExpr yJ(env);
+					IloExpr gamaJ(env);
 					for (j = 0; j < N; j++) {
 						yJ += y[t][h][i][j];
 						if (t > ((h + tB[j][i]) % 24)) {
 							gamaJ += gama[t - ((h + tB[j][i]) % 24)][h][j][i];
 						}
 					}
+					mod.add(g[t-1][i] + v[t][i] + gamaJ - g[t][i] - yJ == 0);
+					yJ.end();
+					gamaJ.end();
 				}
-				mod.add(g[t-1][i] + v[t][i] + gamaJ - g[t][i] - yJ == 0);
-				yJ.end();
-				gamaJ.end();
 			}
 		}
 		
@@ -300,8 +304,8 @@ int main() {
 		
 		cout << "vT[t]-------------------" << endl;
 		for(t = 0; t < T; t++){
-				if (cplex.getValue(vT[t]) > 0) {
-					cout << "t = " << t << " > " << cplex.getValue(vT[t]) << "\t" << endl;
+			if (cplex.getValue(vT[t]) > 0) {
+				cout << "t = " << t << " > " << cplex.getValue(vT[t]) << "\t" << endl;
 			}
 		}
 		
@@ -328,12 +332,12 @@ int main() {
 		
 		cout << endl ;
 		cout << "y[1][h][i][0]-------------------" << endl ;
-			for (h = 1; h < H; h++) {
-				for (i = 0; i < M; i++) {
-					if (cplex.getValue(y[1][h][i][0]) > 0)
-						cout << "[h,i] = [" << h << "," << i << "] > " << cplex.getValue(y[1][h][i][0]) << endl ;																				
-				}
+		for (h = 1; h < H; h++) {
+			for (i = 0; i < M; i++) {
+				if (cplex.getValue(y[1][h][i][0]) > 0)
+					cout << "[h,i] = [" << h << "," << i << "] > " << cplex.getValue(y[1][h][i][0]) << endl ;																				
 			}
+		}
 		
 		cout << endl ;
 		cout << "gama[1][h][j][0]-------------------" << endl ;
