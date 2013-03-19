@@ -104,7 +104,7 @@ int main() {
 		objs.push_back(maxtvF);
 		
 		//Adding objectives to env
-		mod.add(objs[0]);
+		mod.add(objs[1]);
 		
 		cout << "RESTRICTIONS" << endl;
 		//		mod.add(tvB >= 117);
@@ -149,8 +149,10 @@ int main() {
 		 mod.add(v[t][i] == 0);
 		 }
 		 }
-		 */	
-		//		mod.add(tvSF == 0);
+		 */
+		
+		// to capture  min #vehicles for 0 shortfall
+		mod.add(tvSF == 0);
 		
 		//VEHICLE CONSTRAINTS
 		cout << "CONSTRAINT V-1" << endl;
@@ -197,78 +199,77 @@ int main() {
 				gamaJ.end();
 			}
 		}
-
-		/*		
-		 cout << "CONSTRAINT V-6" << endl;
-		 for (t = 1; t < T; t++)
-		 for (j = 0; j < N; j++) {
-		 IloExpr yI(env);
-		 IloExpr gamaI(env);
-		 for (i = 0; i < M; i++) {
-		 if (t > tF[i][j])
-		 yI += y[t-tF[i][j]][i][j];
-		 gamaI += gama[t][j][i];
-		 }
-		 mod.add(rho[t-1][j] + yI - rho[t][j] - gamaI == 0);
-		 yI.end();
-		 gamaI.end();
-		 }
-		 
-		 cout << "CONSTRAINT V-7" << endl;
-		 IloExpr tw(env);
-		 for(k = 1; k < K; k++)
-		 tw += w[k];
-		 for (q = 0; q < Q; q++)
-		 for (j = 0; j < N; j++){
-		 IloExpr yIT(env);
-		 for (t = tmin[j][q]; t <= tmax[j][q]; t++)
-		 for (i = 0; i < M; i++) {
-		 if (t > tF[i][j])
-		 yIT += y[t - tF[i][j]][i][j];
-		 }
-		 mod.add(yIT + vSF[q][j] - ceil((17/W)*P[j]) == 0);
-		 //				mod.add(yI - (tw/W)*P[j] >= 0);
-		 yIT.end();
-		 }
-		 tw.end();
-		 */		
-		/*		cout << "CONSTRAINT V-8" << endl;
-		 for (q = 0; q < Q; q++) {
-		 for (j = 0; j < N; j++) {				
-		 IloExpr tz(env);
-		 for (t = tmin[j][q]; t <= tmax[j][q]; t++) {
-		 tz += z[t][j];
-		 }
-		 mod.add(tz == 1);
-		 tz.end();
-		 }
-		 }
-		 
-		 cout << "CONSTRAINT V-9";
-		 for (t = 1; t < T; t++)
-		 for (j = 0; j < N; j++) {
-		 IloExpr yI(env);
-		 for (i = 0; i < M; i++) {
-		 if (t > tF[i][j])
-		 yI += y[t - tF[i][j]][i][j];
-		 }
-		 mod.add(z[t][j] <= yI <= V*z[t][j]);
-		 yI.end();
-		 }
-		 */		
-		cout << "CONSTRAINT SON" << endl;
+		
+		
+		cout << "CONSTRAINT V-6" << endl;
+		for (t = 1; t < T; t++) {
+			for (j = 0; j < N; j++) {
+				IloExpr yI(env);
+				IloExpr gamaI(env);
+				for (h = 1; h < H; h++) {
+					for (i = 0; i < M; i++) {
+						gamaI += gama[t][h][j][i];
+						if (t > ((h + tF[i][j]) % 24)) {
+							yI += y[t-((h + tF[i][j]) % 24)][h][i][j];
+						}
+					}
+				}
+				mod.add(rho[t-1][j] + yI - rho[t][j] - gamaI == 0);
+				yI.end();
+				gamaI.end();
+			}
+		}
+		
+		cout << "CONSTRAINT V-7" << endl ;
+		for (t = 1; t < T; t++) {
+			for (h = 1; h < H; h++) {
+				for (i = 0; i < M; i++) {
+					for (j = 0; j < N; j++) {
+						IloExpr xK(env) ;
+						for (k = 0; k < K; k++) {
+							xK += w[k] * x[t][h][i][j][k] ;
+						}
+						mod.add(W * y[t][h][i][j] - xK >= 0) ;
+						xK.end() ;
+					}
+				}
+			}
+		}
+		
+		cout << "CONSTRAINT V-8" << endl;
+		for (t = 1; t < T; t++) {
+			for (j = 0; j < N; j++) {
+				for (k = 0; k < K; k++) {
+					IloExpr xIH(env) ;
+					for (h = 1; h < H; h++) {
+						for (i = 0; i < M; i++) {
+							xIH += x[t][h][i][j][k] ;
+						}
+					}
+					mod.add(xIH + vSF[t][j][k] == P[j]) ;
+					xIH.end() ;
+				}
+			}
+		}		
+		
+		cout << "CONSTRAINT SON" << endl ;
+		cout << "SOME EXPRESSIONS TO CAPTURE" << endl ;
+		IloExpr y0HI0(env) ; 
+		for (h = 1; h < H; h++) {
+			for(i = 0; i < M; i++){
+				y0HI0 += y[1][h][i][0] ;
+			}			
+		}
 		
 		IloCplex cplex(env);
 		cplex.extract(mod);
 		cplex.exportModel("model.lp");
 		
-		/*		
-		 cplex.solve();
-		 
-		 cplex.out() << "solution status = " << cplex.getStatus() << endl;
-		 cplex.out() << "objective value = " << cplex.getObjValue() << endl;
-		 */
-		cout << "TEST SON" << endl;
+		cplex.solve();
+		
+		cplex.out() << "solution status = " << cplex.getStatus() << endl;
+		cplex.out() << "objective value = " << cplex.getObjValue() << endl;
+		
 		/*		
 		 IloExpr vTotal(env);
 		 for (t = 0; t < T; t++) {
@@ -293,16 +294,78 @@ int main() {
 		 cout << "t = " << t << "\t > ";
 		 cout << cplex.getValue(vT[t]) << endl;
 		 }
-		 
-		 cout << "v[t][i]-------------------" << endl;
-		 for(t = 0; t < T; t++){
-		 for(i = 0; i < M; i++){
-		 if (cplex.getValue(v[t][i]) > 0) {
-		 cout << "t = " << t << ", i = " << i + 1 << " > " << cplex.getValue(v[t][i]) << "\t" << endl;
-		 }
-		 }
-		 }
-		 
+		 */		 
+		
+		cout << "24%24 = " << 24%24 << endl;
+		
+		cout << "vT[t]-------------------" << endl;
+		for(t = 0; t < T; t++){
+				if (cplex.getValue(vT[t]) > 0) {
+					cout << "t = " << t << " > " << cplex.getValue(vT[t]) << "\t" << endl;
+			}
+		}
+		
+		cout << "v[t][i]-------------------" << endl;
+		for(t = 0; t < T; t++){
+			for(i = 0; i < M; i++){
+				if (cplex.getValue(v[t][i]) > 0) {
+					cout << "t = " << t << ", i = " << i + 1 << " > " << cplex.getValue(v[t][i]) << "\t" << endl;
+				}
+			}
+		}
+		
+		cout << "total y[1][h][i][0]-------------------" << endl ;
+		cout << "total flow to j = 0 at t = 1 > " << cplex.getValue(y0HI0) << endl ;
+		
+		cout << endl ;
+		cout << "g[t][i]-------------------" << endl ;
+		for (t = 0; t < T; t++) {
+			for (i = 0; i < M; i++) {
+				if (cplex.getValue(g[t][i]) > 0)
+					cout << "[t,i] = [" << t << "," << i << "] > " << cplex.getValue(g[t][i]) << endl ;																				
+			}
+		}
+		
+		cout << endl ;
+		cout << "y[1][h][i][0]-------------------" << endl ;
+			for (h = 1; h < H; h++) {
+				for (i = 0; i < M; i++) {
+					if (cplex.getValue(y[1][h][i][0]) > 0)
+						cout << "[h,i] = [" << h << "," << i << "] > " << cplex.getValue(y[1][h][i][0]) << endl ;																				
+				}
+			}
+		
+		cout << endl ;
+		cout << "gama[1][h][j][0]-------------------" << endl ;
+		for (h = 1; h < H; h++) {
+			for (j = 0; j < N; j++) {
+				if (cplex.getValue(gama[1][h][j][0]) > 0)
+					cout << "[h,j] = [" << h << "," << j << "] > " << cplex.getValue(gama[1][h][j][0]) << endl ;																				
+			}
+		}
+		
+		cout << endl ;
+		cout << "x[1][h][i][0][0]-------------------" << endl ;
+		//		for (t = 1; t < T; t++) {
+		for (h = 1; h < H; h++) {
+			for (i = 0; i < M; i++) {
+				for (k = 0; k < K; k++) {
+					if (cplex.getValue(x[1][h][i][0][k]) > 0)
+						cout << "[h,i,k] = [" << h << "," << i << "," << k << "] > " << cplex.getValue(x[1][h][i][0][k]) << endl ;																				
+				}
+			}
+		}
+		
+		//		}
+		cout << "y[1][h][i][1]-------------------" << endl ;
+		for (h = 1; h < H; h++) {
+			for (i = 0; i < M; i++) {
+				if (cplex.getValue(y[1][h][i][1]) > 0)
+					cout << "[h,i] = [" << h << "," << i << "] > " << cplex.getValue(y[1][h][i][1]) << endl ;																				
+			}
+		}
+		
+		/*		 
 		 cout << "vehicle flow around supplier sites" << endl;
 		 cout << "departures from suppliers" << endl;
 		 for (t = 1; t < 121; t++) {
