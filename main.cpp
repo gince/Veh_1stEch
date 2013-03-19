@@ -5,6 +5,7 @@
 #include <iostream>
 #include <fstream>
 #include <math.h>
+#include <stdlib.h>
 
 ILOSTLBEGIN
 
@@ -189,8 +190,9 @@ int main() {
 				for (h = 1; h < H; h++) {
 					for (j = 0; j < N; j++) {
 						yJ += y[t][h][i][j];
-						if (t > ((h + tB[j][i]) % 24)) {
-							gamaJ += gama[t - ((h + tB[j][i]) % 24)][h][j][i];
+						div_t divresult = div ((int)h + (int)tB[j][i], 24);
+						if (t > divresult.quot) {
+							gamaJ += gama[t - divresult.quot][h][j][i];
 						}
 					}
 				}
@@ -209,8 +211,9 @@ int main() {
 				for (h = 1; h < H; h++) {
 					for (i = 0; i < M; i++) {
 						gamaI += gama[t][h][j][i];
-						if (t > ((h + tF[i][j]) % 24)) {
-							yI += y[t-((h + tF[i][j]) % 24)][h][i][j];
+						div_t divresult = div ((int)h + (int)tF[i][j], 24);
+						if (t > divresult.quot) {
+							yI += y[t - divresult.quot][h][i][j];
 						}
 					}
 				}
