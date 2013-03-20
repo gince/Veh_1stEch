@@ -213,7 +213,7 @@ extern IntVar3dMatrix m; //not used here
 extern NumVar5dMatrix x;
 extern IloIntVar tV;
 extern IloIntVarArray vT;
-extern IntVarMatrix v;
+extern IntVar3dMatrix v;
 extern IntVar3dMatrix g;
 extern IntVar3dMatrix rho;
 extern IntVar4dMatrix y;

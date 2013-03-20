@@ -23,7 +23,7 @@ IloInt N = 5;
 IloInt T = 5;
 IloInt K = 3;
 IloInt B = 8;
-IloInt H = 25;
+IloInt H = 24;
 IloInt i, j, t, k, h, b;
 IloInt a1, a2, a3;
 
@@ -77,7 +77,7 @@ IloNumVar d2(env, 0, +IloInfinity);
 
 IloIntVar tV(env, T);
 IloIntVarArray vT(env, T);
-IntVarMatrix v(env, T);
+IntVar3dMatrix v(env, T);
 IntVar3dMatrix g(env, T);
 IntVar3dMatrix rho(env, T);
 IntVar4dMatrix y(env, T);
@@ -257,7 +257,7 @@ void toLatexXY(IloCplex cplex, vector<DNode> dstrcts) {
 //		outfile << "& " << cplex.getValue(y[t][i][j]);
 //		outfile << "& " << cplex.getValue(gama[t][j][i]);
 //		outfile << "& " << cplex.getValue(g[t][i]);
-		outfile << "& " << cplex.getValue(v[t][i]);
+//		outfile << "& " << cplex.getValue(v[t][i]);
 		counter += 1;
 		outfile << "\\\\\\hline";
 	}
