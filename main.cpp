@@ -374,7 +374,14 @@ int main() {
 					cout << "[h,i] = [" << h << "," << i + 1 << "] > " << cplex.getValue(gama[1][h][0][i]) << endl ;																				
 			}
 		}
-/*		
+		cout << "gama[2][h][j][2]-------------------" << endl ;
+		for (h = 0; h < H; h++) {
+			for (i = 0; i < M; i++) {
+				if (cplex.getValue(gama[2][h][0][i]) > 0)
+					cout << "[h,i] = [" << h << "," << i + 1 << "] > " << cplex.getValue(gama[2][h][0][i]) << endl ;																				
+			}
+		}
+		/*		
 		cout << endl ;
 		cout << "x[1][h][i][0][0]-------------------" << endl ;
 		//		for (t = 1; t < T; t++) {
