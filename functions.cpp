@@ -23,7 +23,7 @@ IloInt N = 5;
 IloInt T = 5;
 IloInt K = 3;
 IloInt B = 8;
-IloInt H = 24;
+IloInt H = 4;
 IloInt i, j, t, k, h, b;
 IloInt a1, a2, a3;
 
