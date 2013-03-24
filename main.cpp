@@ -354,13 +354,13 @@ int main() {
 		cout << "total flow to j = 0 at t = 1 > " << cplex.getValue(y0HI0) << endl ;
 		
 		cout << endl ;
-		cout << "g[t][h][3]-------------------" << endl ;
+		cout << "g[t][h][i]-------------------" << endl ;
 //		for (t = 1; t < T; t++) {
 			for (h = 0; h < H; h++) {
-//				for (i = 0; i < M; i++) {
-				if (cplex.getValue(g[1][h][2]) > 0)
-					cout << "[1,h,3] = [" << 1 << "," << h << "," << 3 << "] > " << cplex.getValue(g[1][h][2]) << endl ;																				
-//				}
+				for (i = 0; i < M; i++) {
+				if (cplex.getValue(g[1][h][i]) > 0)
+					cout << "[1,h,i] = [" << 1 << "," << h << "," << i + 1 << "] > " << cplex.getValue(g[1][h][i]) << endl ;																				
+				}
 			}
 //		}
 
