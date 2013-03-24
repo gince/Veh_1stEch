@@ -118,7 +118,7 @@ int main() {
 		objs.push_back(maxtvF);
 		
 		//Adding objectives to env
-		mod.add(objs[1]);
+		mod.add(objs[0]);
 		
 		cout << "RESTRICTIONS" << endl;
 		//		mod.add(tvB >= 117);
@@ -166,7 +166,7 @@ int main() {
 		 */
 		
 		// to capture  min #vehicles for 0 shortfall
-		mod.add(tvSF == 0);
+		//		mod.add(tvSF == 0);
 		
 		//VEHICLE CONSTRAINTS
 		cout << "CONSTRAINT V-1" << endl;
@@ -174,8 +174,8 @@ int main() {
 		for (t = 1; t < T; t++)	{
 			vTT += vT[t];
 		}
-		mod.add(vTT <= tV);
-//		mod.add(vTT <= V);
+//		mod.add(vTT <= tV);
+		mod.add(vTT <= V);
 		vTT.end();
 		
 		cout << "CONSTRAINT V-2" << endl;
