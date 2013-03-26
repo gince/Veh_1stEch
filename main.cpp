@@ -214,18 +214,21 @@ int main() {
 						if (shpHr < 0) {
 							shpHr += 4 ;
 						}
-						div_t div2 = div (shpHr + (int)tB[j][i], 4);
-						if (t > div2.quot) {
-							gamaJ += gama[t - div2.quot][shpHr][j][i];
+						int shpDay = floor ((double)((int)h - (int)tB[j][i]) / 4) ;
+						cout << "[t,h,t_ji] = [" << t << "," << h << "," << tB[j][i] << "] > " << "shpDay = " << t + shpDay << endl ;
+						if (t + shpDay > 0) {
+							gamaJ += gama[t + shpDay][shpHr][j][i];
 						}
 					}
 					int invHr = h - 1;
 					if (invHr < 0) {
 						invHr += 4;
 					}
-					div_t div3 = div(invHr + 1, 4) ;
-					if (t > div3.quot) {
-						mod.add(g[t-div3.quot][invHr][i] + v[t][h][i] + gamaJ - g[t][h][i] - yJ == 0);
+					int invDay = floor ((double) (h - 1) / 4) ;
+					cout << " [t,h] = [" << t << "," << h << "] > " << "invDay = " << t + invDay << endl ;
+					cout << " [t,h] = [" << t << "," << h << "] > " << "invHr = " << invHr << endl ;
+					if (t + invDay > 0) {
+						mod.add(g[t + invDay][invHr][i] + v[t][h][i] + gamaJ - g[t][h][i] - yJ == 0);
 					} else {
 						mod.add(v[t][h][i] + gamaJ - g[t][h][i] - yJ == 0);
 					}
@@ -235,7 +238,7 @@ int main() {
 			}
 		}
 		
-		cout << "CONSTRAINT V-6" << endl;
+		cout << "CONSTRAINT V-5" << endl;
 		for (t = 1; t < T; t++) {
 			for (j = 0; j < N; j++) {
 				for (h = 0; h < H; h++) {
@@ -248,19 +251,22 @@ int main() {
 						if (shpHr < 0) {
 							shpHr += 4 ;
 						}
-						div_t div2 = div (shpHr + (int)tF[i][j], 4);
-						if (t > div2.quot) {
-							yI += y[t - div2.quot][shpHr][i][j];
+						int shpDay = floor ((double)((int)h - (int)tF[i][j]) / 4) ;
+						cout << "[t,h,t_ij] = [" << t << "," << h << "," << tF[i][j] << "] > " << "shpDay = " << t + shpDay << endl ;
+						if (t + shpDay > 0) {
+							yI += y[t + shpDay][shpHr][i][j];
 						}
 					}
 					int invHr = h - 1;
 					if (invHr < 0) {
 						invHr += 4;
 					}
-					div_t div3 = div(invHr + 1, 4) ;
-					if (t > div3.quot) {
-						mod.add(rho[t-div3.quot][invHr][j] + yI - rho[t][h][j] - gamaI == 0);
-					}	else {
+					int invDay = floor ((double) (h - 1) / 4) ;
+					cout << " [t,h] = [" << t << "," << h << "] > " << "invDay = " << t + invDay << endl ;
+					cout << " [t,h] = [" << t << "," << h << "] > " << "invHr = " << invHr << endl ;
+					if (t + invDay > 0) {
+						mod.add(rho[t + invDay][invHr][j] + yI - rho[t][h][j] - gamaI == 0);
+					} else {
 						mod.add(yI - rho[t][h][j] - gamaI == 0);
 					}
 					yI.end();
@@ -268,7 +274,7 @@ int main() {
 				}
 			}
 		}
-		
+
 		cout << "CONSTRAINT V-7" << endl ;
 		for (t = 1; t < T; t++) {
 			for (h = 0; h < H; h++) {
