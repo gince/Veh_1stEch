@@ -295,8 +295,8 @@ int main() {
 		
 		IloCplex cplex(env);
 		
-		// OPTIMALITY GAP 2%
-		//		cplex.setParam(IloCplex::EpGap, 0.02);
+		// OPTIMALITY GAP 0.67%
+		cplex.setParam(IloCplex::EpGap, 0.0067);
 		cplex.extract(mod);
 		cplex.exportModel("model.lp");
 		
@@ -304,6 +304,17 @@ int main() {
 		
 		cplex.out() << "solution status = " << cplex.getStatus() << endl;
 		cplex.out() << "objective value = " << cplex.getObjValue() << endl;
+		
+		cout << "u[t][j][k]-------------------" << endl;
+		for(t = 1; t < T; t++){
+			for(j = 0; j < N; j++){
+				for(k = 0; k < K; k++){
+					if (cplex.getValue(vSF[t][j][k]) > 0) {
+						cout << "[t,j,k] = [" << t << "," << j + 1 << "," << k + 1 << "] > " << cplex.getValue(vSF[t][j][k]) << "\t" << endl;
+					}
+				}
+			}
+		}
 		
 		cout << "# Vehicles = " << cplex.getValue(vTotal) << endl;
 		

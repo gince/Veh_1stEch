@@ -20,7 +20,7 @@ using namespace std;
 
 IloInt M = 3;
 IloInt N = 5;
-IloInt T = 5;
+IloInt T = 6;
 IloInt K = 3;
 IloInt B = 8;
 IloInt H = 4;
