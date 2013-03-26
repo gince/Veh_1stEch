@@ -126,50 +126,6 @@ int main() {
 		mod.add(objs[1]);
 		
 		cout << "RESTRICTIONS" << endl;
-		//		mod.add(tvB >= 117);
-		//		mod.add(tvSF <= 118);
-		//		mod.add(vT[0] == 0);
-		/*		IloExpr tVQ1(env);
-		 for (t = 0; t < 25; t++) {
-		 tVQ1 += vT[t];
-		 }
-		 mod.add(tVQ1 == 50);
-		 tVQ1.end();
-		 IloExpr tVQ2(env);
-		 for (t = 25; t < 49; t++) {
-		 tVQ2 += vT[t];
-		 }
-		 mod.add(tVQ2 == 30);
-		 tVQ2.end();
-		 IloExpr tVQ3(env);
-		 for (t = 49; t < 73; t++) {
-		 tVQ3 += vT[t];
-		 }
-		 mod.add(tVQ3 == 20);
-		 tVQ3.end();
-		 IloExpr tVQ4(env);
-		 for (t = 73; t < 97; t++) {
-		 tVQ4 += vT[t];
-		 }
-		 mod.add(tVQ4 == 0);
-		 tVQ4.end();
-		 IloExpr tVQ5(env);
-		 for (t = 97; t < 121; t++) {
-		 tVQ5 += vT[t];
-		 }
-		 mod.add(tVQ5 == 0);
-		 tVQ5.end();
-		 */	
-		/*		mod.add(v[0][0] == 25);
-		 mod.add(v[0][1] == 23);
-		 mod.add(v[0][2] == 25);
-		 for (t = 1; t < 121; t++) {
-		 for (i = 0; i < M; i++) {
-		 mod.add(v[t][i] == 0);
-		 }
-		 }
-		 */
-		
 		// to capture  min #vehicles for 0 shortfall
 		mod.add(tvSF == 0);
 		
