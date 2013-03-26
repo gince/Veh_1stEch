@@ -43,17 +43,22 @@ int main() {
 			tP += P[j];
 		
 		vT = IloIntVarArray(env, T, 0, tP);
+		
 		for (t = 1; t < T; t++) {
 			v[t] = IntVarMatrix(env, H);
+			for (h=0; h < H; h++) {
+				v[t][h] = IloIntVarArray(env, M, 0, tP);
+			}
+		}
+		
+		for (t = 0; t < T; t++) {
 			g[t] = IntVarMatrix(env, H);
 			rho[t] = IntVarMatrix(env, H);
 			for (h=0; h < H; h++) {
 				g[t][h] = IloIntVarArray(env, M, 0, tP);
 				rho[t][h] = IloIntVarArray(env, N, 0, tP);
-				v[t][h] = IloIntVarArray(env, M, 0, tP);
 			}
 		}
-		
 		
 		for (t = 1; t < T; t++) {
 			y[t] = IntVar3dMatrix(env, H);
@@ -195,11 +200,19 @@ int main() {
 		
 		cout << "CONSTRAINT V-3" << endl;
 		for (i = 0; i < M; i++)
-			mod.add(g[1][0][i] == Vin[i]);
+			for (h = 0; h < H; h++) {
+				if (h == 3) {
+					mod.add(g[0][h][i] == Vin[i]);
+				} else {
+					mod.add(g[0][h][i] == 0);
+				}
+			}
 		
 		cout << "CONSTRAINT V-4" << endl;
 		for (j = 0; j < N; j++)
-			mod.add(rho[1][0][j] == 0);
+			for (h = 0; h < H; h++) {
+					mod.add(rho[0][h][j] == 0);
+			}
 		
 		cout << "CONSTRAINT V-5" << endl;
 		for (t = 1; t < T; t++) {
@@ -215,7 +228,7 @@ int main() {
 							shpHr += 4 ;
 						}
 						int shpDay = floor ((double)((int)h - (int)tB[j][i]) / 4) ;
-						cout << "[t,h,t_ji] = [" << t << "," << h << "," << tB[j][i] << "] > " << "shpDay = " << t + shpDay << endl ;
+//						cout << "[t,h,t_ji] = [" << t << "," << h << "," << tB[j][i] << "] > " << "shpDay = " << t + shpDay << endl ;
 						if (t + shpDay > 0) {
 							gamaJ += gama[t + shpDay][shpHr][j][i];
 						}
@@ -225,20 +238,16 @@ int main() {
 						invHr += 4;
 					}
 					int invDay = floor ((double) (h - 1) / 4) ;
-					cout << " [t,h] = [" << t << "," << h << "] > " << "invDay = " << t + invDay << endl ;
-					cout << " [t,h] = [" << t << "," << h << "] > " << "invHr = " << invHr << endl ;
-					if (t + invDay > 0) {
-						mod.add(g[t + invDay][invHr][i] + v[t][h][i] + gamaJ - g[t][h][i] - yJ == 0);
-					} else {
-						mod.add(v[t][h][i] + gamaJ - g[t][h][i] - yJ == 0);
-					}
+//					cout << " [t,h] = [" << t << "," << h << "] > " << "invDay = " << t + invDay << endl ;
+//					cout << " [t,h] = [" << t << "," << h << "] > " << "invHr = " << invHr << endl ;
+					mod.add(g[t + invDay][invHr][i] + v[t][h][i] + gamaJ - g[t][h][i] - yJ == 0);
 					yJ.end();
 					gamaJ.end();
 				}
 			}
 		}
 		
-		cout << "CONSTRAINT V-5" << endl;
+		cout << "CONSTRAINT V-6" << endl;
 		for (t = 1; t < T; t++) {
 			for (j = 0; j < N; j++) {
 				for (h = 0; h < H; h++) {
@@ -252,7 +261,7 @@ int main() {
 							shpHr += 4 ;
 						}
 						int shpDay = floor ((double)((int)h - (int)tF[i][j]) / 4) ;
-						cout << "[t,h,t_ij] = [" << t << "," << h << "," << tF[i][j] << "] > " << "shpDay = " << t + shpDay << endl ;
+//						cout << "[t,h,t_ij] = [" << t << "," << h << "," << tF[i][j] << "] > " << "shpDay = " << t + shpDay << endl ;
 						if (t + shpDay > 0) {
 							yI += y[t + shpDay][shpHr][i][j];
 						}
@@ -262,13 +271,9 @@ int main() {
 						invHr += 4;
 					}
 					int invDay = floor ((double) (h - 1) / 4) ;
-					cout << " [t,h] = [" << t << "," << h << "] > " << "invDay = " << t + invDay << endl ;
-					cout << " [t,h] = [" << t << "," << h << "] > " << "invHr = " << invHr << endl ;
-					if (t + invDay > 0) {
-						mod.add(rho[t + invDay][invHr][j] + yI - rho[t][h][j] - gamaI == 0);
-					} else {
-						mod.add(yI - rho[t][h][j] - gamaI == 0);
-					}
+//					cout << " [t,h] = [" << t << "," << h << "] > " << "invDay = " << t + invDay << endl ;
+//					cout << " [t,h] = [" << t << "," << h << "] > " << "invHr = " << invHr << endl ;
+					mod.add(rho[t + invDay][invHr][j] + yI - rho[t][h][j] - gamaI == 0);
 					yI.end();
 					gamaI.end();
 				}
@@ -345,7 +350,7 @@ int main() {
 			}
 		}
 		
-		cout << "v[t][i]-------------------" << endl;
+		cout << "v[t][h][i]-------------------" << endl;
 		for(t = 1; t < T; t++){
 			for(h = 0; h < H; h++){
 				for (i = 0; i < M; i++) {
@@ -361,14 +366,14 @@ int main() {
 		
 		cout << endl ;
 		cout << "g[t][h][i]-------------------" << endl ;
-//		for (t = 1; t < T; t++) {
+		for (t = 0; t < 2; t++) {
 			for (h = 0; h < H; h++) {
 				for (i = 0; i < M; i++) {
-				if (cplex.getValue(g[1][h][i]) > 0)
-					cout << "[1,h,i] = [" << 1 << "," << h << "," << i + 1 << "] > " << cplex.getValue(g[1][h][i]) << endl ;																				
+				if (cplex.getValue(g[t][h][i]) > 0)
+					cout << "[t,h,i] = [" << t << "," << h << "," << i + 1 << "] > " << cplex.getValue(g[t][h][i]) << endl ;																				
 				}
 			}
-//		}
+		}
 
 		
 		cout << endl ;
@@ -377,6 +382,15 @@ int main() {
 			for (i = 0; i < M; i++) {
 				if (cplex.getValue(y[1][h][i][0]) > 0)
 					cout << "[h,i] = [" << h << "," << i + 1 << "] > " << cplex.getValue(y[1][h][i][0]) << endl ;																				
+			}
+		}
+		
+		cout << endl ;
+		cout << "y[1][h][3][j]-------------------" << endl ;
+		for (h = 0; h < H; h++) {
+			for (j = 0; j < N; j++) {
+				if (cplex.getValue(y[1][h][2][j]) > 0)
+					cout << "[h,j] = [" << h << "," << j + 1 << "] > " << cplex.getValue(y[1][h][2][j]) << endl ;																				
 			}
 		}
 		

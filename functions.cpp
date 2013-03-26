@@ -75,7 +75,7 @@ IntVar3dMatrix m(env, T);
 IloNumVar d1(env, 0, +IloInfinity);
 IloNumVar d2(env, 0, +IloInfinity);
 
-IloIntVar tV(env, T);
+IloIntVar tV(env);
 IloIntVarArray vT(env, T);
 IntVar3dMatrix v(env, T);
 IntVar3dMatrix g(env, T);
