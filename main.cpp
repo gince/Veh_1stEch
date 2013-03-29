@@ -34,6 +34,17 @@ int main() {
 			}
 		}
 		
+		//converts priorities to a total of 3
+		double totalPriority;
+		for (k = 0; k < K; k++) {
+			totalPriority += beta[k] ; 
+		}
+		cout << "totalPriority = " << totalPriority << endl ;
+		for (k = 0; k < K; k++) {
+			beta[k] = 3 * beta[k] / totalPriority ;
+			cout << "beta[k] = " << beta[k] << endl ;
+		}
+		
 		vector<DNode> districts = getDNodes(); // AVC, BAH, BAK, ..., SIL;
 		vector<SNode> suppliers = getSNodes();
 		vector<Cluster> clusters = getClusters();
