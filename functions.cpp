@@ -44,6 +44,7 @@ IloNumArray S(env);
 IloNumArray P(env);
 IloInt V;
 IloNumArray w(env);
+IloNumArray beta(env);
 IloNum W;
 IloIntArray Vin(env);
 NumMatrix drtn(env);
