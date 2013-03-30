@@ -201,7 +201,7 @@ int main() {
 		cout << "CONSTRAINT V-3" << endl;
 		for (i = 0; i < M; i++)
 			for (h = 0; h < H; h++) {
-				if (h == 2) {
+				if (h == H - 1) {
 					mod.add(g[0][h][i] == Vin[i]);
 				} else {
 					mod.add(g[0][h][i] == 0);
