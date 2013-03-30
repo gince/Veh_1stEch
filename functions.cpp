@@ -23,7 +23,7 @@ IloInt N = 5;
 IloInt T = 6;
 IloInt K = 3;
 IloInt B = 8;
-IloInt H = 4;
+IloInt H = 3;
 IloInt i, j, t, k, h, b;
 IloInt a1, a2, a3;
 
@@ -44,6 +44,7 @@ IloNumArray S(env);
 IloNumArray P(env);
 IloInt V;
 IloNumArray w(env);
+IloNumArray beta(env);
 IloNum W;
 IloIntArray Vin(env);
 NumMatrix drtn(env);

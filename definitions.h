@@ -185,6 +185,7 @@ extern IntMatrix tB;
 extern IloNumArray P;
 extern IloInt V;
 extern IloNumArray w;
+extern IloNumArray beta;
 extern IloNum W;
 extern IloIntArray Vin;
 extern IloNumArray S; //not used here
