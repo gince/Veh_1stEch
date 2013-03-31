@@ -104,7 +104,7 @@ int main() {
 					y[t][h][i] = IloIntVarArray(env, N, 0, tP);
 					x[t][h][i] = NumVarMatrix(env, N);
 					for(j=0; j < N; j++) {
-						x[t][h][i][j] = IloNumVarArray(env, K, 0, tP);
+						x[t][h][i][j] = IloNumVarArray(env, K, 0, xBound);
 					}
 				}
 				for(j=0; j < N; j++) {
@@ -185,13 +185,13 @@ int main() {
 			}
 		}
  */
-				// vT[t] is fixed
+/*				// vT[t] is fixed
 		mod.add(vT[1] == 21);
 		mod.add(vT[2] == 20);
 		mod.add(vT[3] == 20);
 		mod.add(vT[4] == 20);
 		mod.add(vT[5] == 20);
-		
+*/		
 		//VEHICLE CONSTRAINTS
 		cout << "CONSTRAINT V-1" << endl;
 		IloExpr vTT(env);
@@ -199,7 +199,7 @@ int main() {
 			vTT += vT[t];
 		}
 //		mod.add(vTT <= tV);
-//		mod.add(vTT <= V);
+		mod.add(vTT <= V);
 		vTT.end();
 		
 		cout << "CONSTRAINT V-2" << endl;
@@ -358,15 +358,18 @@ int main() {
 		cplex.out() << "objective value = " << cplex.getObjValue() << endl;
 		
 		cout << "u[t][j][k]-------------------" << endl;
+		int totalSF = 0 ; 
 		for(t = 1; t < T; t++){
 			for(j = 0; j < N; j++){
 				for(k = 0; k < K; k++){
 					if (cplex.getValue(vSF[t][j][k]) > 0) {
+						totalSF += cplex.getValue(vSF[t][j][k]) ; 
 						cout << "[t,j,k] = [" << t << "," << j + 1 << "," << k + 1 << "] > " << cplex.getValue(vSF[t][j][k]) << "\t" << endl;
 					}
 				}
 			}
 		}
+		cout << "Total shortfall = " << totalSF << endl;
 		
 		cout << "# Vehicles = " << cplex.getValue(vTotal) << endl;
 		
