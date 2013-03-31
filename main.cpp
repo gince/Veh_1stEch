@@ -1,8 +1,9 @@
 // vehicle routing only
 #include <ilcplex/ilocplex.h>
 #include <set>
-#include <vector>
+#include <algorithm>
 #include <iostream>
+#include <vector>
 #include <fstream>
 #include <math.h>
 
@@ -31,6 +32,8 @@ int main() {
 			for (j = 0; j < N; j++) {
 				tF[i][j] = ceil((double)tF[i][j]/(24/H));
 				tB[j][i] = ceil((double)tB[j][i]/(24/H));
+//				cout << tF[i][j] << endl;
+//				cout << tB[j][i] << endl;
 			}
 		}
 		
@@ -52,6 +55,23 @@ int main() {
 		int tP = 0;
 		for (j = 0; j < N; j++)
 			tP += P[j];
+		
+		double minCommWeight = w[0];
+		for (k = 1; k < K; k++) {
+			if (w[k] < minCommWeight)
+				minCommWeight = w[k];
+		}
+		cout << "minCommWeight = " << minCommWeight << endl;
+		
+		double maxPop = P[0];
+		for (j = 1; j < N; j++) {
+			if (P[j] > maxPop)
+				maxPop = P[j];
+		}
+		cout << "maxPop = " << maxPop << endl;
+		
+		int xBound = W / minCommWeight ;
+		cout << "xBound = " << xBound << endl;
 		
 		vT = IloIntVarArray(env, T, 0, tP);
 		
@@ -326,8 +346,9 @@ int main() {
 		IloCplex cplex(env);
 		
 		// OPTIMALITY GAP 0.67%
-		cplex.setParam(IloCplex::EpGap, 0.0067);
+		//		cplex.setParam(IloCplex::EpGap, 0.0067);
 		cplex.setParam(IloCplex::RootAlg, IloCplex::Network);
+//		cplex.setParam(IloCplex::MIPEmphasis, 2);
 		cplex.setParam(IloCplex::Symmetry, 5);
 		cplex.extract(mod);
 		cplex.exportModel("model.lp");
@@ -451,7 +472,7 @@ int main() {
 		for (h = 0; h < H; h++) {
 			for (j = 0; j < N; j++) {
 				if (cplex.getValue(y[1][h][2][j]) > 0)
-					cout << "[h,j,t_ij] = [" << h << "," << j + 1 << "," << tF[2][j] << "] > " << cplex.getValue(y[1][h][2][j]) << endl ;																				
+					cout << "[h,j,t_ij] = [" << h << "," << j + 1 << "," << tF[2][j] << "] > " << cplex.getValue(y[1][h][2][j]) << endl ;					
 			}
 		}
 		
