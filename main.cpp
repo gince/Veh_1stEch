@@ -345,7 +345,7 @@ int main() {
 		IloCplex cplex(env);
 		
 		// OPTIMALITY GAP 0.20%
-		cplex.setParam(IloCplex::EpGap, 0.002);
+		cplex.setParam(IloCplex::EpGap, 0.0066);
 //		cplex.setParam(IloCplex::RootAlg, IloCplex::Network);
 		cplex.setParam(IloCplex::MIPEmphasis, 2);
 		cplex.setParam(IloCplex::Symmetry, 5);
