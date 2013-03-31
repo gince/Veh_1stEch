@@ -358,15 +358,18 @@ int main() {
 		cplex.out() << "objective value = " << cplex.getObjValue() << endl;
 		
 		cout << "u[t][j][k]-------------------" << endl;
+		int totalSF = 0 ; 
 		for(t = 1; t < T; t++){
 			for(j = 0; j < N; j++){
 				for(k = 0; k < K; k++){
 					if (cplex.getValue(vSF[t][j][k]) > 0) {
+						totalSF += cplex.getValue(vSF[t][j][k]) ; 
 						cout << "[t,j,k] = [" << t << "," << j + 1 << "," << k + 1 << "] > " << cplex.getValue(vSF[t][j][k]) << "\t" << endl;
 					}
 				}
 			}
 		}
+		cout << "Total shortfall = " << totalSF << endl;
 		
 		cout << "# Vehicles = " << cplex.getValue(vTotal) << endl;
 		
