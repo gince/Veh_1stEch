@@ -1,8 +1,9 @@
 // vehicle routing only
 #include <ilcplex/ilocplex.h>
 #include <set>
-#include <vector>
+#include <algorithm>
 #include <iostream>
+#include <vector>
 #include <fstream>
 #include <math.h>
 
@@ -31,6 +32,8 @@ int main() {
 			for (j = 0; j < N; j++) {
 				tF[i][j] = ceil((double)tF[i][j]/(24/H));
 				tB[j][i] = ceil((double)tB[j][i]/(24/H));
+//				cout << tF[i][j] << endl;
+//				cout << tB[j][i] << endl;
 			}
 		}
 		
@@ -52,6 +55,23 @@ int main() {
 		int tP = 0;
 		for (j = 0; j < N; j++)
 			tP += P[j];
+		
+		double minCommWeight = w[0];
+		for (k = 1; k < K; k++) {
+			if (w[k] < minCommWeight)
+				minCommWeight = w[k];
+		}
+		cout << "minCommWeight = " << minCommWeight << endl;
+		
+		double maxPop = P[0];
+		for (j = 1; j < N; j++) {
+			if (P[j] > maxPop)
+				maxPop = P[j];
+		}
+		cout << "maxPop = " << maxPop << endl;
+		
+		int xBound = W / minCommWeight ;
+		cout << "xBound = " << xBound << endl;
 		
 		vT = IloIntVarArray(env, T, 0, tP);
 		
@@ -138,7 +158,7 @@ int main() {
 		
 		cout << "RESTRICTIONS" << endl;
 		// to capture  min #vehicles for 0 shortfall
-		//		mod.add(tvSF == 0);
+		//				mod.add(tvSF == 0);
 /*		
 		for (t = 1; t < T; t++) {
 			for (i = 0; i < M; i++) {
@@ -165,13 +185,12 @@ int main() {
 			}
 		}
  */
-		/*		// vT[t] is fixed
-		mod.add(vT[1] == 11);
-		mod.add(vT[2] == 10);
-		mod.add(vT[3] == 10);
-		mod.add(vT[4] == 10);
-		mod.add(vT[5] == 10);
-*/		
+				// vT[t] is fixed
+		mod.add(vT[1] == 21);
+		mod.add(vT[2] == 20);
+		mod.add(vT[3] == 20);
+		mod.add(vT[4] == 20);
+		mod.add(vT[5] == 20);
 		
 		//VEHICLE CONSTRAINTS
 		cout << "CONSTRAINT V-1" << endl;
@@ -180,7 +199,7 @@ int main() {
 			vTT += vT[t];
 		}
 //		mod.add(vTT <= tV);
-		mod.add(vTT <= V);
+//		mod.add(vTT <= V);
 		vTT.end();
 		
 		cout << "CONSTRAINT V-2" << endl;
@@ -325,9 +344,10 @@ int main() {
 		
 		IloCplex cplex(env);
 		
-		// OPTIMALITY GAP 0.67%
-		cplex.setParam(IloCplex::EpGap, 0.0067);
-		cplex.setParam(IloCplex::RootAlg, IloCplex::Network);
+		// OPTIMALITY GAP 0.20%
+		cplex.setParam(IloCplex::EpGap, 0.0066);
+//		cplex.setParam(IloCplex::RootAlg, IloCplex::Network);
+		cplex.setParam(IloCplex::MIPEmphasis, 2);
 		cplex.setParam(IloCplex::Symmetry, 5);
 		cplex.extract(mod);
 		cplex.exportModel("model.lp");
@@ -349,6 +369,11 @@ int main() {
 		}
 		
 		cout << "# Vehicles = " << cplex.getValue(vTotal) << endl;
+		
+		cout << "initial veh. inv.--------------" << endl;
+		for(i = 0; i < M; i++){
+			cout << "i = " << i << " > " << Vin[i] << "\t" << endl;
+		}
 		
 		cout << "vT[t]-------------------" << endl;
 		for(t = 1; t < T; t++){
@@ -451,7 +476,7 @@ int main() {
 		for (h = 0; h < H; h++) {
 			for (j = 0; j < N; j++) {
 				if (cplex.getValue(y[1][h][2][j]) > 0)
-					cout << "[h,j,t_ij] = [" << h << "," << j + 1 << "," << tF[2][j] << "] > " << cplex.getValue(y[1][h][2][j]) << endl ;																				
+					cout << "[h,j,t_ij] = [" << h << "," << j + 1 << "," << tF[2][j] << "] > " << cplex.getValue(y[1][h][2][j]) << endl ;					
 			}
 		}
 		
