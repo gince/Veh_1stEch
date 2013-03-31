@@ -104,7 +104,7 @@ int main() {
 					y[t][h][i] = IloIntVarArray(env, N, 0, tP);
 					x[t][h][i] = NumVarMatrix(env, N);
 					for(j=0; j < N; j++) {
-						x[t][h][i][j] = IloNumVarArray(env, K, 0, tP);
+						x[t][h][i][j] = IloNumVarArray(env, K, 0, xBound);
 					}
 				}
 				for(j=0; j < N; j++) {
