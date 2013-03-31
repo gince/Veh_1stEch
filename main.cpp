@@ -154,11 +154,11 @@ int main() {
 		objs.push_back(maxtvF);
 		
 		//Adding objectives to env
-		mod.add(objs[1]);
+		mod.add(objs[0]);
 		
 		cout << "RESTRICTIONS" << endl;
 		// to capture  min #vehicles for 0 shortfall
-				mod.add(tvSF == 0);
+		//				mod.add(tvSF == 0);
 /*		
 		for (t = 1; t < T; t++) {
 			for (i = 0; i < M; i++) {
@@ -185,13 +185,12 @@ int main() {
 			}
 		}
  */
-		/*		// vT[t] is fixed
-		mod.add(vT[1] == 11);
-		mod.add(vT[2] == 10);
-		mod.add(vT[3] == 10);
-		mod.add(vT[4] == 10);
-		mod.add(vT[5] == 10);
-*/		
+				// vT[t] is fixed
+		mod.add(vT[1] == 21);
+		mod.add(vT[2] == 20);
+		mod.add(vT[3] == 20);
+		mod.add(vT[4] == 20);
+		mod.add(vT[5] == 20);
 		
 		//VEHICLE CONSTRAINTS
 		cout << "CONSTRAINT V-1" << endl;
@@ -199,7 +198,7 @@ int main() {
 		for (t = 1; t < T; t++)	{
 			vTT += vT[t];
 		}
-		mod.add(vTT <= tV);
+//		mod.add(vTT <= tV);
 //		mod.add(vTT <= V);
 		vTT.end();
 		
@@ -345,10 +344,10 @@ int main() {
 		
 		IloCplex cplex(env);
 		
-		// OPTIMALITY GAP 0.67%
-		//		cplex.setParam(IloCplex::EpGap, 0.0067);
-		cplex.setParam(IloCplex::RootAlg, IloCplex::Network);
-//		cplex.setParam(IloCplex::MIPEmphasis, 2);
+		// OPTIMALITY GAP 0.20%
+		cplex.setParam(IloCplex::EpGap, 0.002);
+//		cplex.setParam(IloCplex::RootAlg, IloCplex::Network);
+		cplex.setParam(IloCplex::MIPEmphasis, 2);
 		cplex.setParam(IloCplex::Symmetry, 5);
 		cplex.extract(mod);
 		cplex.exportModel("model.lp");
@@ -370,6 +369,11 @@ int main() {
 		}
 		
 		cout << "# Vehicles = " << cplex.getValue(vTotal) << endl;
+		
+		cout << "initial veh. inv.--------------" << endl;
+		for(i = 0; i < M; i++){
+			cout << "i = " << i << " > " << Vin[i] << "\t" << endl;
+		}
 		
 		cout << "vT[t]-------------------" << endl;
 		for(t = 1; t < T; t++){
