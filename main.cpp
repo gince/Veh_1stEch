@@ -160,11 +160,11 @@ int main() {
 		objs.push_back(mintV);
 		
 		//Adding objectives to env
-		mod.add(objs[1]);
+		mod.add(objs[0]);
 		
 		cout << "RESTRICTIONS" << endl;
 		// to capture  min #vehicles for 0 shortfall
-				mod.add(tvSF == 0);
+//				mod.add(tvSF == 0);
 /*		// vT[t] is fixed
 		mod.add(vT[1] == 11);
 		mod.add(vT[2] == 10);
@@ -180,8 +180,8 @@ int main() {
             for (t = 1; t < T; t++)	{
                 vTT += vT[t][l];
             }
-            mod.add(vTT <= tV[l]);
-            //		mod.add(vTT <= V[l]);
+//            mod.add(vTT <= tV[l]);
+            mod.add(vTT <= V[l]);
             vTT.end();
         }
 		
@@ -553,7 +553,7 @@ int main() {
 		cplex.out() << "objective value = " << cplex.getObjValue() << endl;
 		cout << "min shortfall = " << cplex.getValue(tvSF) << endl;
         for (l = 0; l < L; l++)
-            cout << "min # vehicles of type " << l + 0 << " = " << cplex.getValue(tV[l]) << endl;
+            cout << "min # vehicles with capacity " << W[l] << " = " << cplex.getValue(tV[l]) << endl;
     
 		/*		d1.end(); d2.end();	s.end(); sT.end(); I.end();	x.end(); Sk.end(); J.end();
 		 E.end(); zeta.end(); X.end(); p.end(); m.end();	v.end(); vT.end(); g.end();
