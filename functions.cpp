@@ -40,49 +40,25 @@ set<int> bundle;
 vector<set<int> > bundles(B);
 
 //PARAMETERS
-IloNumArray S(env);
 IloNumArray P(env);
-IloInt V;
+IloIntArray V;
 IloNumArray w(env);
 IloNumArray beta(env);
-IloNum W;
+IloNumArray W;
 IloIntArray Vin(env);
-NumMatrix drtn(env);
 IntMatrix tF(env);
 IntMatrix tB(env);
 
-//not used here
-IloNumArray teta(env);
-IloNumArray tau(env);
-IloNumArray pComm(env);
-IloNumArray goal(env);
-IloNumArray pGoal(env);
-NumMatrix D(env);
-
-
 //VARIABLES
-NumVar3dMatrix s(env, T);
-NumVarMatrix sT(env, T);
-NumVar3dMatrix I(env, T);
 NumVar5dMatrix x(env, T);
-IloNumVarArray Sk(env, K);
 
-IntVar3dMatrix J(env, T);
-IntVar3dMatrix E(env, T);
-IntVar4dMatrix zeta(env, T);
-IntVar6dMatrix X(env, T);
-IntVar5dMatrix p(env, T);
-IntVar3dMatrix m(env, T);
-IloNumVar d1(env, 0, +IloInfinity);
-IloNumVar d2(env, 0, +IloInfinity);
-
-IloIntVar tV(env);
-IloIntVarArray vT(env, T);
-IntVar3dMatrix v(env, T);
-IntVar3dMatrix g(env, T);
-IntVar3dMatrix rho(env, T);
-IntVar4dMatrix y(env, T);
-IntVar4dMatrix gama(env, T);
+IloIntVarArray tV(env);
+IntVarMatrix vT(env, T);
+IntVar4dMatrix v(env, T);
+IntVar4dMatrix g(env, T);
+IntVar4dMatrix rho(env, T);
+IntVar5dMatrix y(env, T);
+IntVar5dMatrix gama(env, T);
 IntVar3dMatrix vSF(env, T);
 
 vector<SNode> getSNodes() {

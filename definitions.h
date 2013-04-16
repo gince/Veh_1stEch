@@ -183,42 +183,21 @@ extern vector<set<int> > bundles;
 extern IntMatrix tF;
 extern IntMatrix tB;
 extern IloNumArray P;
-extern IloInt V;
+extern IloIntArray V;
 extern IloNumArray w;
 extern IloNumArray beta;
-extern IloNum W;
-extern IloIntArray Vin;
-extern IloNumArray S; //not used here
-extern IloNumArray teta; //not used here
-extern IloNumArray tau; //not used here
-extern IloNumArray pComm; //not used here
-extern IloNumArray goal; //not used here
-extern IloNumArray pGoal; //not used here
-extern NumMatrix drtn; //not used here
-extern NumMatrix D; //not used here
+extern IloNumArray W;
+extern IntMatrix Vin;
 
 //VARIABLES
-extern IloNumVar d1, d2; //not used here
-extern NumVar3dMatrix s; //not used here
-extern NumVarMatrix sT; //not used here
-extern NumVar3dMatrix I; //not used here
-extern IloNumVarArray Sk; //not used here
-
-extern IntVar3dMatrix J; //not used here
-extern IntVar3dMatrix E; // modeldeki \xi  //not used here
-extern IntVar4dMatrix zeta; //modeldeki \zeta //not used here
-extern IntVar6dMatrix X; //not used here
-extern IntVar5dMatrix p; //not used here
-extern IntVar3dMatrix m; //not used here
-
 extern NumVar5dMatrix x;
-extern IloIntVar tV;
-extern IloIntVarArray vT;
-extern IntVar3dMatrix v;
-extern IntVar3dMatrix g;
-extern IntVar3dMatrix rho;
-extern IntVar4dMatrix y;
-extern IntVar4dMatrix gama;
+extern IloIntVarArray tV;
+extern IntVarMatrix vT;
+extern IntVar4dMatrix v;
+extern IntVar4dMatrix g;
+extern IntVar4dMatrix rho;
+extern IntVar5dMatrix y;
+extern IntVar5dMatrix gama;
 extern IntVar3dMatrix vSF;
 
 #endif /* DISASTER_ALLOCATION_DEFS_H_ */

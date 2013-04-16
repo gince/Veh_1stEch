@@ -115,7 +115,7 @@ int main() {
 				vSF[t][j] = IloIntVarArray(env, K, 0, tP);
 			}
 		}
-		
+/*		
 		//OBJECTIVE0 :: Minimize total shortfall in vehicle capacity
 		IloExpr tvSF(env);
 		for (t = 1; t < T; t++)
@@ -192,7 +192,7 @@ int main() {
 		mod.add(vT[4] == 10);
 		mod.add(vT[5] == 10);
 */		
-		
+/*		
 		//VEHICLE CONSTRAINTS
 		cout << "CONSTRAINT V-1" << endl;
 		IloExpr vTT(env);
