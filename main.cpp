@@ -17,7 +17,8 @@ int main() {
 #include "definitions.h"
 	try {
 		
-		const char* datafile  = "data.txt";
+//		const char* datafile  = "data.txt"; //desktop
+		const char* datafile  = "/Users/gince/research/xcodes/Veh_1stEch/data.txt";
 		ifstream dfile(datafile);
 		if ( !dfile ) {
 			cerr << "ERROR: could not open file '" << datafile
@@ -26,7 +27,8 @@ int main() {
 		}
 		
 		dfile >> P >> Vin >> tF >> tB >> w >> beta >> W >> V;
-		
+        cout << "checkpoint 1" << endl;
+
 		//converts hours to periods
 		for (i = 0; i < M; i++) {
 			for (j = 0; j < N; j++) {
@@ -35,7 +37,9 @@ int main() {
 //				cout << tF[i][j] << endl;
 //				cout << tB[j][i] << endl;
 			}
+            cout << "i = " << i << endl;
 		}
+        cout << "checkpoint 2" << endl;
 		
 		//converts priorities to a total of 3
 		double totalPriority;
@@ -47,6 +51,7 @@ int main() {
 			beta[k] = 3 * beta[k] / totalPriority ;
 			cout << "beta[k] = " << beta[k] << endl ;
 		}
+        cout << "checkpoint 3" << endl;
 		
 		vector<DNode> districts = getDNodes(); // AVC, BAH, BAK, ..., SIL;
 		vector<SNode> suppliers = getSNodes();
@@ -70,52 +75,69 @@ int main() {
 		}
 		cout << "maxPop = " << maxPop << endl;
 		
-		int xBound = W / minCommWeight ;
-		cout << "xBound = " << xBound << endl;
-		
-		vT = IloIntVarArray(env, T, 0, tP);
-		
+//		int xBound = W / minCommWeight ;
+//		cout << "xBound = " << xBound << endl;
+
+        tV = IloIntVarArray(env, L, 0, tP);
+        
+        cout << "Declaration of vT(varphi), v" << endl;
 		for (t = 1; t < T; t++) {
-			v[t] = IntVarMatrix(env, H);
+            vT[t] = IloIntVarArray(env, L, 0, tP);
+			v[t] = IntVar3dMatrix(env, H);
 			for (h=0; h < H; h++) {
-				v[t][h] = IloIntVarArray(env, M, 0, tP);
+				v[t][h] = IntVarMatrix(env, L);
+                for (l=0; l < L; l++) {
+                    v[t][h][l] = IloIntVarArray(env, M, 0, tP);
+                }
 			}
 		}
 		
+        cout << "Declaration of g, rho" << endl;
 		for (t = 0; t < T; t++) {
-			g[t] = IntVarMatrix(env, H);
-			rho[t] = IntVarMatrix(env, H);
+			g[t] = IntVar3dMatrix(env, H);
+			rho[t] = IntVar3dMatrix(env, H);
 			for (h=0; h < H; h++) {
-				g[t][h] = IloIntVarArray(env, M, 0, tP);
-				rho[t][h] = IloIntVarArray(env, N, 0, tP);
+				g[t][h] = IntVarMatrix(env, L);
+				rho[t][h] = IntVarMatrix(env, L);
+                for (l=0; l < L; l++) {
+                    g[t][h][l] = IloIntVarArray(env, M, 0, tP);
+                    rho[t][h][l] = IloIntVarArray(env, N, 0, tP);
+                }
 			}
 		}
 		
+        cout << "Declaration of x, y, gama, u" << endl;
 		for (t = 1; t < T; t++) {
-			y[t] = IntVar3dMatrix(env, H);
-			gama[t] = IntVar3dMatrix(env, H);
+			y[t] = IntVar4dMatrix(env, H);
+			gama[t] = IntVar4dMatrix(env, H);
 			x[t] = NumVar4dMatrix(env, H);
 			vSF[t] = IntVarMatrix(env, N);
 			for (h = 0; h < H; h++) {
-				y[t][h] = IntVarMatrix(env, M);
-				gama[t][h] = IntVarMatrix(env, N);
+				y[t][h] = IntVar3dMatrix(env, L);
+				gama[t][h] = IntVar3dMatrix(env, L);
 				x[t][h] = NumVar3dMatrix(env, M);
-				for(i=0; i < M; i++) {
-					y[t][h][i] = IloIntVarArray(env, N, 0, tP);
-					x[t][h][i] = NumVarMatrix(env, N);
-					for(j=0; j < N; j++) {
-						x[t][h][i][j] = IloNumVarArray(env, K, 0, tP);
-					}
-				}
-				for(j=0; j < N; j++) {
-					gama[t][h][j] = IloIntVarArray(env, M, 0, tP);
-				}
+                for(l=0; l < L; l++) {
+                    y[t][h][l] = IntVarMatrix(env, M);
+                    gama[t][h][l] = IntVarMatrix(env, N);
+                    for(i=0; i < M; i++) {
+                        y[t][h][l][i] = IloIntVarArray(env, N, 0, tP);
+                    }
+                    for(j=0; j < N; j++) {
+                        gama[t][h][l][j] = IloIntVarArray(env, M, 0, tP);
+                    }
+                }
+                for(i=0; i < M; i++) {
+                    x[t][h][i] = NumVarMatrix(env, N);
+                    for(j=0; j < N; j++) {
+                        x[t][h][i][j] = IloNumVarArray(env, K, 0, tP);
+                    }
+                }
 			}
 			for(j=0; j < N; j++) {
 				vSF[t][j] = IloIntVarArray(env, K, 0, tP);
 			}
 		}
-/*		
+		
 		//OBJECTIVE0 :: Minimize total shortfall in vehicle capacity
 		IloExpr tvSF(env);
 		for (t = 1; t < T; t++)
@@ -123,35 +145,19 @@ int main() {
 				for (k = 0; k < K; k++)
 					tvSF += beta[k] * vSF[t][j][k];
 		
-		IloExpr tvB(env);
-		for (t = 1; t < T; t++)
-			for (h = 0; h < H; h++)
-				for (j = 0; j < N; j++)
-					for (i = 0; i < M; i++)
-						tvB += gama[t][h][j][i];
-		
-		IloExpr tvF(env);
-		for (t = 1; t < T; t++)
-			for (h = 0; h < H; h++)
-				for (j = 0; j < N; j++)
-					for (i = 0; i < M; i++)
-						tvF += y[t][h][i][j];
-		
+		IloExpr ttV(env);
+		for (l = 0; l < L; l++)
+            ttV += tV[l];
+        
 		vector<IloObjective> objs;
 		vector<IloExpr> Z;
 		Z.push_back(tvSF);
-		Z.push_back(tV);
-		Z.push_back(tvB);
-		Z.push_back(tvF);
+		Z.push_back(ttV);
 		
 		IloObjective minSF(env, Z[0], IloObjective::Minimize);
 		IloObjective mintV(env, Z[1], IloObjective::Minimize);
-		IloObjective maxtvB(env, Z[2], IloObjective::Maximize);
-		IloObjective maxtvF(env, Z[3], IloObjective::Maximize);
 		objs.push_back(minSF);
 		objs.push_back(mintV);
-		objs.push_back(maxtvB);
-		objs.push_back(maxtvF);
 		
 		//Adding objectives to env
 		mod.add(objs[1]);
@@ -159,107 +165,94 @@ int main() {
 		cout << "RESTRICTIONS" << endl;
 		// to capture  min #vehicles for 0 shortfall
 				mod.add(tvSF == 0);
-/*		
-		for (t = 1; t < T; t++) {
-			for (i = 0; i < M; i++) {
-				for (j = 0; j < N; j++) {
-					IloExpr yH(env);
-					for (h = 0; h < H; h++) {
-						yH += y[t][h][i][j];
-					}
-					mod.add(yH <= 50) ;
-					yH.end();
-				}
-			}
-		}
-		for (t = 1; t < T; t++) {
-			for (j = 0; j < N; j++) {
-				IloExpr yIH(env);
-				for (i = 0; i < M; i++) {
-					for (h = 0; h < H; h++) {
-						yIH += y[t][h][i][j];
-					}
-				}
-//				mod.add(yIH <= 50) ;
-				yIH.end();
-			}
-		}
- */
-		/*		// vT[t] is fixed
+/*		// vT[t] is fixed
 		mod.add(vT[1] == 11);
 		mod.add(vT[2] == 10);
 		mod.add(vT[3] == 10);
 		mod.add(vT[4] == 10);
 		mod.add(vT[5] == 10);
 */		
-/*		
+
 		//VEHICLE CONSTRAINTS
 		cout << "CONSTRAINT V-1" << endl;
-		IloExpr vTT(env);
-		for (t = 1; t < T; t++)	{
-			vTT += vT[t];
-		}
-		mod.add(vTT <= tV);
-//		mod.add(vTT <= V);
-		vTT.end();
+		for (l = 0; l < L; l++)	{
+            IloExpr vTT(env);
+            for (t = 1; t < T; t++)	{
+                vTT += vT[t][l];
+            }
+            mod.add(vTT <= tV[l]);
+            //		mod.add(vTT <= V[l]);
+            vTT.end();
+        }
 		
 		cout << "CONSTRAINT V-2" << endl;
-		for (t = 1; t < T; t++) {
-			IloExpr vITI(env);
-			for (i = 0; i < M; i++)
-				vITI += v[t][0][i];
-			mod.add(vITI <= vT[t]);
-			vITI.end();
-		}
+		for (l = 0; l < L; l++)	{
+            for (t = 1; t < T; t++) {
+                IloExpr vITI(env);
+                for (i = 0; i < M; i++)
+                    vITI += v[t][0][l][i];
+                mod.add(vITI <= vT[t][l]);
+                vITI.end();
+            }
+        }
 		
 		cout << "CONSTRAINT V-2-EK silinebilir mi bak" << endl;
 		for (t = 1; t < T; t++)
 			for (h = 1; h < H; h++)
-				for (i = 0; i < M; i++)
-					mod.add(v[t][h][i] == 0);
+                for (l = 0; l < L; l++)
+                    for (i = 0; i < M; i++)
+                        mod.add(v[t][h][l][i] == 0);
 		
 		cout << "CONSTRAINT V-3" << endl;
-		for (i = 0; i < M; i++)
-			for (h = 0; h < H; h++) {
-				if (h == H - 1) {
-					mod.add(g[0][h][i] == Vin[i]);
-				} else {
-					mod.add(g[0][h][i] == 0);
-				}
-			}
+		for (l = 0; l < L; l++)	{
+            for (i = 0; i < M; i++) {
+                for (h = 0; h < H; h++) {
+                    if (h == H - 1) {
+                        mod.add(g[0][h][l][i] == Vin[l][i]);
+                    } else {
+                        mod.add(g[0][h][l][i] == 0);
+                    }
+                }
+            }
+        }
 		
 		cout << "CONSTRAINT V-4" << endl;
-		for (j = 0; j < N; j++)
-			for (h = 0; h < H; h++) {
-					mod.add(rho[0][h][j] == 0);
-			}
+		for (l = 0; l < L; l++)	{
+            for (j = 0; j < N; j++) {
+                for (h = 0; h < H; h++) {
+					mod.add(rho[0][h][l][j] == 0);
+                }
+            }
+        }
 		
 		cout << "CONSTRAINT V-5" << endl;
 		for (t = 1; t < T; t++) {
 			for (i = 0; i < M; i++) {
 				for (h = 0; h < H; h++) {
-					IloExpr yJ(env);
-					IloExpr gamaJ(env);
-					for (j = 0; j < N; j++) {
-						yJ += y[t][h][i][j];
-						div_t div1 = div ((int)h - (int)tB[j][i], (int)H);
-						int shpHr = div1.rem ;
-						if (shpHr < 0) {
-							shpHr += H ;
-						}
-						int shpDay = floor ((double)((int)h - (int)tB[j][i]) / H) ;
-						if (t + shpDay > 0) {
-							gamaJ += gama[t + shpDay][shpHr][j][i];
-						}
-					}
-					int invHr = h - 1;
-					if (invHr < 0) {
-						invHr += H;
-					}
-					int invDay = floor ((double) (h - 1) / H) ;
-					mod.add(g[t + invDay][invHr][i] + v[t][h][i] + gamaJ - g[t][h][i] - yJ == 0);
-					yJ.end();
-					gamaJ.end();
+                    for (l = 0; l < L; l++)	{
+                        IloExpr yJ(env);
+                        IloExpr gamaJ(env);
+                        for (j = 0; j < N; j++) {
+                            yJ += y[t][h][l][i][j];
+                            div_t div1 = div ((int)h - (int)tB[j][i], (int)H);
+                            int shpHr = div1.rem ;
+                            if (shpHr < 0) {
+                                shpHr += H ;
+                            }
+                            int shpDay = floor ((double)((int)h - (int)tB[j][i]) / H) ;
+                            if (t + shpDay > 0) {
+                                gamaJ += gama[t + shpDay][shpHr][l][j][i];
+                            }
+                        }
+                        int invHr = h - 1;
+                        if (invHr < 0) {
+                            invHr += H;
+                        }
+                        int invDay = floor ((double) (h - 1) / H) ;
+                        mod.add(g[t + invDay][invHr][l][i] + v[t][h][l][i] + gamaJ - g[t][h][l][i] - yJ == 0);
+                        yJ.end();
+                        gamaJ.end();
+                    }
 				}
 			}
 		}
@@ -268,28 +261,30 @@ int main() {
 		for (t = 1; t < T; t++) {
 			for (j = 0; j < N; j++) {
 				for (h = 0; h < H; h++) {
-					IloExpr yI(env);
-					IloExpr gamaI(env);
-					for (i = 0; i < M; i++) {
-						gamaI += gama[t][h][j][i];
-						div_t div1 = div ((int)h - (int)tF[i][j], (int)H);
-						int shpHr = div1.rem ;
-						if (shpHr < 0) {
-							shpHr += H ;
-						}
-						int shpDay = floor ((double)((int)h - (int)tF[i][j]) / H) ;
-						if (t + shpDay > 0) {
-							yI += y[t + shpDay][shpHr][i][j];
-						}
-					}
-					int invHr = h - 1;
-					if (invHr < 0) {
-						invHr += H;
-					}
-					int invDay = floor ((double) (h - 1) / H) ;
-					mod.add(rho[t + invDay][invHr][j] + yI - rho[t][h][j] - gamaI == 0);
-					yI.end();
-					gamaI.end();
+                    for (l = 0; l < L; l++)	{
+                        IloExpr yI(env);
+                        IloExpr gamaI(env);
+                        for (i = 0; i < M; i++) {
+                            gamaI += gama[t][h][l][j][i];
+                            div_t div1 = div ((int)h - (int)tF[i][j], (int)H);
+                            int shpHr = div1.rem ;
+                            if (shpHr < 0) {
+                                shpHr += H ;
+                            }
+                            int shpDay = floor ((double)((int)h - (int)tF[i][j]) / H) ;
+                            if (t + shpDay > 0) {
+                                yI += y[t + shpDay][shpHr][l][i][j];
+                            }
+                        }
+                        int invHr = h - 1;
+                        if (invHr < 0) {
+                            invHr += H;
+                        }
+                        int invDay = floor ((double) (h - 1) / H) ;
+                        mod.add(rho[t + invDay][invHr][l][j] + yI - rho[t][h][l][j] - gamaI == 0);
+                        yI.end();
+                        gamaI.end();
+                    }
 				}
 			}
 		}
@@ -303,8 +298,13 @@ int main() {
 						for (k = 0; k < K; k++) {
 							xK += w[k] * x[t][h][i][j][k] ;
 						}
-						mod.add(W * y[t][h][i][j] - xK >= 0) ;
+						IloExpr yL(env) ;
+						for (l = 0; l < L; l++) {
+							yL += W[l] * y[t][h][l][i][j] ;
+						}
+						mod.add(yL - xK >= 0) ;
 						xK.end() ;
+                        yL.end() ;
 					}
 				}
 			}
@@ -327,7 +327,7 @@ int main() {
 		}		
 		
 		cout << "CONSTRAINT SON" << endl ;
-				
+/*				
 		cout << "SOME EXPRESSIONS TO CAPTURE" << endl ;
 		IloExpr y0HI0(env) ; 
 		for (h = 0; h < H; h++) {
@@ -342,7 +342,7 @@ int main() {
 				for (i = 0; i < M; i++)
 					vTotal += v[t][h][i];
 		}
-		
+*/		
 		IloCplex cplex(env);
 		
 		// OPTIMALITY GAP 0.67%
@@ -357,7 +357,7 @@ int main() {
 		
 		cplex.out() << "solution status = " << cplex.getStatus() << endl;
 		cplex.out() << "objective value = " << cplex.getObjValue() << endl;
-		
+/*		
 		cout << "u[t][j][k]-------------------" << endl;
 		for(t = 1; t < T; t++){
 			for(j = 0; j < N; j++){
@@ -549,12 +549,12 @@ int main() {
 			}
 		}
 		*/
-/*		 
-		 cplex.out() << "objective value = " << cplex.getObjValue() << endl;
-		 cout << "min shortfall = " << cplex.getValue(tvSF) << endl;
-		 cout << "min # vehicles = " << cplex.getValue(tV) << endl;
-		 cout << "tD = " << tD << endl;
-		 */		
+		 
+		cplex.out() << "objective value = " << cplex.getObjValue() << endl;
+		cout << "min shortfall = " << cplex.getValue(tvSF) << endl;
+        for (l = 0; l < L; l++)
+            cout << "min # vehicles of type " << l + 0 << " = " << cplex.getValue(tV[l]) << endl;
+    
 		/*		d1.end(); d2.end();	s.end(); sT.end(); I.end();	x.end(); Sk.end(); J.end();
 		 E.end(); zeta.end(); X.end(); p.end(); m.end();	v.end(); vT.end(); g.end();
 		 gama.end(); y.end(); rho.end(); env.end(); mod.end(); tvSF.end(); vTotal.end();

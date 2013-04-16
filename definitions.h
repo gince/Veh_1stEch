@@ -161,11 +161,9 @@ extern IloInt M;
 extern IloInt N;
 extern IloInt T;
 extern IloInt K;
-extern IloInt B;
-extern IloInt C;
 extern IloInt H;
-extern IloInt i, j, t, k, h, b;
-extern IloInt a1, a2, a3;
+extern IloInt L;
+extern IloInt i, j, t, k, l, h, b;
 
 extern vector<vector<int> > nStates;
 

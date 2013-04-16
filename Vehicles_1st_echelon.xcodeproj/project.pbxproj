@@ -173,7 +173,7 @@
 		};
 		1DEB923608733DC60010E9CD /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 45ED80B616F6571C00B1D561 /* cplex_desktop.xcconfig */;
+			baseConfigurationReference = 4520174716ED5B5D00842FE3 /* cplex_laptop.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;

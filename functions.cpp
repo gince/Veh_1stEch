@@ -24,8 +24,8 @@ IloInt T = 6;
 IloInt K = 3;
 IloInt B = 8;
 IloInt H = 6;
-IloInt i, j, t, k, h, b;
-IloInt a1, a2, a3;
+IloInt L = 2;
+IloInt i, j, t, k, l, h, b;
 
 vector<vector<int> > nStates(N, vector<int>(T));
 
@@ -41,11 +41,11 @@ vector<set<int> > bundles(B);
 
 //PARAMETERS
 IloNumArray P(env);
-IloIntArray V;
+IloIntArray V(env);
 IloNumArray w(env);
 IloNumArray beta(env);
-IloNumArray W;
-IloIntArray Vin(env);
+IloNumArray W(env);
+IntMatrix Vin(env);
 IntMatrix tF(env);
 IntMatrix tB(env);
 
@@ -137,6 +137,7 @@ vector<Cluster> getClusters() {
 	return clusters;
 }
 
+/*
 void toLatexP(IloCplex cplex, vector<DNode> dstrcts) {
 	ofstream outfile;
 	outfile.imbue(locale(std::locale(), new thSep));
@@ -243,4 +244,4 @@ void toLatexXY(IloCplex cplex, vector<DNode> dstrcts) {
 	//	outfile << endl << "\\label{tab:XXXXXXX}" << endl;
 	//	outfile << "\\end{table}" << endl;
 }
-
+*/
